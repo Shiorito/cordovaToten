@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+  <!-- Vue.js-->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+  <ons-navigator swapable id="myNavigator" page="index.html"></ons-navigator>
+</body>
+</html>
+
+<template id="index.html">
+  <ons-page id="index">
+    <div class="background" style="background-color: #FFFFFF;"></div>
+    <div class="content" v-cloak>
+      <div v-if="!tutorialFinish">
+        <a @click="goTutorial"><img class="logo" src="images/ダウンロード後_シンボル_顔なし.png"></a>
+      </div>
+      <div v-else>
+        <header v-show="currentUser != null">
+          <div :class="{ menu_btn: true, open_: menuFlag }" @click="naviOpen">
+            <span class="menu_trigger">
+              <span></span><span></span><span></span>
+            </span>
+          </div>
+        </header>
+        <transition>
+          <div class="nav" v-show="menuFlag">
+            <input type="checkbox" id="acd-check1" class="acd-check">
+            <label for="acd-check1" class="acd-label">OPTIONS </label>
+            <div class="acd-content">
+              <a @click="urlClick">利用規約</a>
+              <a @click="urlClick">プライバシー<br>ポリシー</a>
+              <a @click="goFeedback">フィードバック</a>
+              <a @click="goTutorial">チュートリアル</a>
+            </div>
+            <a @click="logoutButtonClick" class="signout">SIGN OUT</a>
+          </div>
+        </transition>
+        
+        <div v-show="loading">
+          <div id="notSignIn" v-if="currentUser == null">
+            <p><img class="logo" src="./images/サインイン前_シンボル.png" alt="ロゴ"></p>
+            <a @click="loginButtonClick"><img class="img-button" src="images/各種ボタン/signin_ボタン.png"></a><br>
+            <a @click="signUpButtonClick"><img class="img-button" src="images/各種ボタン/register_ボタン.png"></a>
+          </div>
+          <div id="isSignIn" v-else>
+            <a @click="goAnalyze"><img class="logo" src="./images/home_シンボル.png" alt="ロゴ"></a>
+            <p style="color: #7B7B7B; margin: 0;">Recents</p>
+            <div class="recode" v-if="recent.length!=0">
+              <a v-for="data in recent" class="data" @click="onDataButton(data)">
+                <span>{{ data.timestamp.getFullYear() }}/{{ ('0'+(data.timestamp.getMonth()+1)).slice(-2) }}/{{ data.timestamp.getDate() }}</span>
+                <p>{{ data.answers[0] }}</p>
+                <hr>
+              </a>
+            </div>
+            <div v-else>
+              <p style="padding: 80px 0;">まだ記録がありません。</p>
+            </div>
+          </div>
+        </div>
+        <my-toolbar v-show="currentUser != null"></my-toolbar>
+      </div>
+    </div>
+    
+    <script>
+      ons.getScriptPage().onInit = function() {
+        sBanner();
+        var vue = new Vue({
+          el: '#index',
+          data: {
+            currentUser: firebase.auth().currentUser,
+            recent: [],
+            menuFlag: false,
+            tutorialFinish: localStorage.getItem('tutorial_finished'),
+            loading: true,
+          },
+          created: function() {
+            console.log("created");
+          },
+          methods: {
+            loginButtonClick: function () {
+              hBanner();
+              document.getElementById("myNavigator").pushPage('account.html', {data: {title: 'アカウント'}});
+            },
+            signUpButtonClick: function () {
+              hBanner();
+              document.getElementById("myNavigator").pushPage('register.html', {data: {title: 'アカウント'}});
+            },
+            logoutButtonClick: function () {
+              firebase.auth().signOut();
+              this.menuFlag = false;
+            },
+            naviOpen: function() {
+              this.menuFlag = !this.menuFlag;
+            },
+            onDataButton: function(data) {
+              hBanner();
+              if (data.complete) {
+                document.getElementById("myNavigator").pushPage('result.html', {
+                  data: {
+                    qAndA: data,
+                    recode: true,
+                  }
+                });
+              } else {
+                document.getElementById("myNavigator").pushPage('question.html', {
+                  data: {
+                    qAndA: data,
+                  }
+                });
+              }
+            },
+            goTutorial: function() {
+              hBanner();
+              document.getElementById("myNavigator").pushPage('explain.html');
+            },
+            goAnalyze: function() {
+              document.getElementById("myNavigator").resetToPage('analyze.html');
+            },
+            goFeedback: function() {
+              hBanner();
+              document.getElementById("myNavigator").pushPage('feedback.html');
+            },
+            urlClick: function() {
+              window.open("https://noteappm.wixsite.com/policies", "_system", "location=no,usewkwebview=yes");
+            }
+          },
+        });
+        firebase.auth().onAuthStateChanged(user => {
+          if(user) {
+            vue.recent = getQuestionAndAnswer(2);
+            vue.currentUser = user.uid;
+            console.log(vue.currentUser);
+            vue.loading = true;
+          } else {
+            vue.currentUser = null;
+          }
+        });
+      }
+    </script>
+  </ons-page>
+</template>

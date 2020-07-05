@@ -1,0 +1,239 @@
+<ons-page>
+  <div class="background" style="background-color: #E8F6FD;"></div>
+  <div id="questionVue" v-cloak>
+    <button @click="showSkipModal = true" class="skip">SKIP</button>
+    <div class="theme">
+      <p>{{ theme }}</p>
+    </div>
+    <div v-for="item in items" class="items">
+      <p :class='item.tag == "out" ? "lightBlue" : "blue"'>{{ item.num }}</p>
+      <p>{{ item.why }}</p>
+      <p>{{ item.answer }}</p>
+    </div>
+    <ons-icon icon="fa-arrow-down" v-show="qa.num != 1"></ons-icon>
+    <img src="images/チュートリアル_説明3-1.png" class="explain-que" v-show="qa.num == 2" width="122px">
+    <div class="writting">
+      <a @click="onNumber" :class="numberClass">{{ qa.num }}</a>
+      <p>{{ qa.why }}<input v-show="qa.num >= 2" type="text" v-model="qa.question" :placeholder="placeholder_que">？</p>
+      <textarea v-model="qa.answer" :placeholder="placeholder_ans"></textarea>
+    </div>
+    <img src="images/チュートリアル_説明2-1.png" class="explain-ans" v-show="qa.num == 1" width="250px">
+    <img src="images/チュートリアル_説明2-2.png" class="explain-tag" v-show="qa.num == 1" width="260px">
+    <img src="images/チュートリアル_説明3-2.png" class="explain-ans" v-show="qa.num == 2" width="253px">
+    <img src="images/チュートリアル_説明3-3.png" class="explain-tag" v-show="qa.num == 2" width="250px">
+    <div class="buttons">
+      <div>
+        <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" height="30px">ヘルプ</a>
+        <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" height="30px">途中セーブ</a>
+      </div>
+      <div>
+        <a v-show="qa.num >= 5" @click="finishButtonClick" style="margin-left: 20px;"><img src="./images/各種ボタン/finish_ボタン.png" alt="finishボタン" width="70px"></a>
+        <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  width="70px"></a>  
+      </div>
+    </div>
+    <div class="overlay" v-show="showSavingModal" @click="closeModal">
+      <p>分析を中断しますか？</p>
+      <button @click="savingButton">はい</button>
+      <button @click="closeModal">いいえ</button>
+    </div>
+    <div class="overlay1" v-show="show1Modal" @click="closeModal">
+      <img src="images/チュートリアル_ウインク_キャラ.png" class="cartoon">
+      <div class="speech">
+        <img src="images/吹き出し/チュートリアル_吹き出し(modal1).png">
+      </div>
+    </div>
+    <div class="overlay1" v-show="show2Modal" @click="closeModal">
+      <img src="images/分析中_キャラ.png" class="cartoon">
+      <div class="speech">
+        <img src="images/吹き出し/チュートリアル_吹き出し(modal2).png">
+      </div>
+    </div>
+    <div class="overlay1" v-show="show3Modal" @click="closeModal">
+      <img src="images/分析中_キャラ.png" class="cartoon">
+      <div class="speech">
+        <img src="images/吹き出し/チュートリアル_吹き出し(modal3).png">
+      </div>
+    </div>
+    <div class="overlay1" v-show="show4Modal" @click="closeModal">
+      <img src="images/チュートリアル_キリッと_キャラ.png" class="cartoon">
+      <div class="speech">
+        <img src="images/吹き出し/チュートリアル_吹き出し(modal4).png">
+      </div>
+    </div>
+    <div class="overlay1" v-show="show5Modal" @click="closeModal">
+      <img src="images/チュートリアル_疲れた_キャラ.png" class="cartoon">
+      <div class="speech">
+        <img src="images/吹き出し/チュートリアル_吹き出し(modal5).png">
+      </div>
+    </div>
+    <skip-modal v-if="showSkipModal" @close="showSkipModal = false"></skip-modal>
+  </div>
+  
+  <script>
+    var myNavigator = document.querySelector('#myNavigator');
+    
+    ons.getScriptPage().onInit = function() {
+      var items = [];
+      var why = "なぜ取り組みたい/叶えたい";
+      var vm_q = new Vue({
+        el: '#questionVue',
+        data: {
+          theme: "英会話を学びたい",
+          items: items,
+          qa: {
+            num: 1,
+            why: why,
+            question: "",
+            answer: "",
+            tag: "",
+          },
+          showSavingModal: false,
+          showHelpModal: false,
+          show1Modal: false,
+          show2Modal: false,
+          show3Modal: false,
+          show4Modal: false,
+          show5Modal: false,
+          numberClass: "defo",
+          temp: {
+            questions: [
+              "取り組みたい/叶えたい",
+              "留学生と話せると良いのか",
+              "違う文化を持つ人と話したいのか",
+              "日本人らしすぎる気がするのか",
+              "はっきりとものが言えないのか",
+            ],
+            answers: [
+              "英語が話せたら留学生と話せるから",
+              "違う文化を持つ人と話してみたいから",
+              "今の自分は日本人らしすぎる気がするから。",
+              "人の顔色を必要以上に伺ってしまっている節があるから。先輩や先生など目上の人たちに気を使えるのは自分の長所だけど、同級生にも自分の思っていることをはっきり言えないのは問題だと感じる。",
+              "自分の意見にあまり自信がないから。意見して変な目で見られるよりは、言わないほうがいいやと思ってしまう。"
+            ],
+            tags: [
+              "out",
+              "in",
+              "in",
+              "in",
+              "in",
+            ]
+          },
+          placeholder_que: "",
+          placeholder_ans: "英語が話せたら留学生と話せるから",
+          showSkipModal: false,
+        },
+        created: function() {
+          var vue = this;
+          setTimeout(function() {vue.show1Modal = true}, 1000);
+        },
+        methods: {
+          interruptionButtonClick: function() {
+            ons.notification.toast('チュートリアルでは途中セーブできません', {timeout: 1000, animation: "fall"});
+          },
+          helpButtonClick: function() {
+            ons.notification.toast('チュートリアルではヘルプを表示できません', {timeout: 1000, animation: "fall"});
+          },
+          nextButtonClick: function() {
+            if(this.qa.num == 1) {
+              if(this.qa.answer != "英語が話せたら留学生と話せるから") {
+                ons.notification.toast( "「英語が話せたら留学生と話せるから」と入力しよう", {timeout: 1000, animation: 'fall'});
+                return;
+              }
+              if(this.qa.tag != "out") {
+                ons.notification.toast( "1回タップしよう", {timeout: 1000, animation: 'fall'});
+                return;
+              }
+            }
+            if(this.qa.num == 2) {
+              if(this.qa.question != "留学生と話せると良いのか") {
+                ons.notification.toast( "「留学生と話せると良いのか」と入力しよう", {timeout: 1000, animation: 'fall'});
+                return;
+              }
+              if(this.qa.answer != "違う文化を持つ人と話してみたいから") {
+                ons.notification.toast( "「違う文化を持つ人と話してみたいから」と入力しよう", {timeout: 1000, animation: 'fall'});
+                return;
+              }
+              if(this.qa.tag != "in") {
+                ons.notification.toast( "2回タップしよう", {timeout: 1000, animation: 'fall'});
+                return ;
+              }
+            }
+            this.qa.why = this.qa.why + this.qa.question + "？";
+            this.items.push(Object.assign({}, this.qa));
+            this.placeholder_que = this.temp.questions[this.qa.num];
+            this.placeholder_ans = this.temp.answers[this.qa.num];
+            this.qa.num++;
+            this.qa.why = "なぜ";
+            this.qa.question = "";
+            this.qa.answer = "";
+            this.numberClass = "defo";
+            this.qa.tag = "";
+            
+            if(this.qa.num == 2) {
+              var vue = this;
+              setTimeout(function() {vue.show3Modal = true}, 1000);
+            } else if(this.qa.num == 3) {
+              var vue = this;
+              setTimeout(function() {vue.show4Modal = true}, 1000);
+            }
+          },
+          finishButtonClick: function() {
+            if(this.qa.answer != "") {
+              this.qa.why = this.qa.why + this.qa.question + "？";
+              this.items.push(Object.assign({}, this.qa));
+            }
+            myNavigator.pushPage('result_tutorial.html');
+          },
+          closeModal: function() {
+            this.showSavingModal = false;
+            this.showHelpModal = false;
+            this.show2Modal = false;
+            if(this.show1Modal == true) {
+              this.show1Modal = false;
+              this.show2Modal = true;
+            }
+            this.show3Modal = false;
+            if (this.show5Modal == true) {
+              this.show5Modal = false;
+            }
+            if (this.show4Modal == true) {
+              this.show4Modal = false;
+              var t = this;
+              var id = setInterval(function() {
+                if (t.qa.num < 5) {
+                  t.qa.question = t.temp.questions[t.qa.num-1];
+                  t.qa.answer = t.temp.answers[t.qa.num-1];
+                  t.qa.tag = t.temp.tags[t.qa.num-1];
+                  t.numberClass = "blue";
+                  t.qa.why = t.qa.why + t.qa.question + "？";
+                  t.items.push(Object.assign({}, t.qa));
+                  t.qa.why = "なぜ";
+                  t.qa.question = t.temp.questions[t.qa.num];
+                  t.qa.answer = t.temp.answers[t.qa.num];
+                  t.qa.num++;
+                } else {
+                  t.show5Modal = true;
+                  clearInterval(id);
+                }
+              }, 1000);
+            }
+          },
+          savingButton: function() {
+          },
+          onNumber: function() {
+            if(this.numberClass == "defo") {
+              this.numberClass = "lightBlue";
+              this.qa.tag = "out";
+            } else if (this.numberClass == "lightBlue") {
+              this.numberClass = "blue";
+              this.qa.tag = "in";
+            } else {
+              this.numberClass = "defo";
+              this.qa.tag = "";
+            }
+          }
+        }
+      });
+    }
+  </script>
+</ons-page>

@@ -1,0 +1,20 @@
+<ons-page id="resume">
+  <div class="background" style="background-color: #ED6A4C;"></div>
+  <div id="hoge">
+    <img src="images/分析スタート_キャラ.png">
+    <p>RESUME!</p>
+  </div>
+  <script>
+    var myNavigator = document.querySelector('#myNavigator')
+    ons.getScriptPage().onInit = function() {
+      setTimeout(startQuestion, 800)
+    }
+    function startQuestion() {
+      myNavigator.replacePage('question.html', {
+        data: {
+          qAndA: myNavigator.topPage.data.qAndA
+        }
+      })
+    }
+  </script>
+</ons-page>

@@ -1,0 +1,46 @@
+<ons-page id="account">
+  <div id="signIn">
+    <a @click="document.getElementById('myNavigator').popPage()" style="align-self: flex-start; margin-left: 30px;"><ons-icon icon="fa-chevron-left"></ons-icon> キャンセル</a>
+    <p>SIGN IN</p>
+    <div>
+      <input type="email" id="email" v-model="email" placeholder="メールアドレス">
+      <input type="password" id="password" v-model="password" placeholder="パスワード">
+      <a @click="onLoginAccount"><img src="images/各種ボタン/signin実行_ボタン.png" width="50px"></a>
+      <!-- <hr>
+      <button @click="onTwitterAccount" class="twitter_login"><ons-icon icon="fa-twitter"></ons-icon> Twitterアカウントでサインイン</button>
+      <button @click="onGoogleAccount" class="google_login"><ons-icon icon="fa-google"></ons-icon> Googleアカウントでサインイン</button> -->
+    </div>
+    <a class="forgot_password" @click="onForgotPassword">パスワードを忘れた場合</a>
+  </div>
+  <script>
+    ons.getScriptPage().onInit = function() {
+      var vm_a = new Vue({
+        el: '#signIn',
+        data: {
+          email: "",
+          password: ""
+        },
+        methods: {
+          onLoginAccount: function() {
+            firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+              .then(function () {
+                ons.notification.toast('ログイン成功', { timeout: 1000, animation: 'fall'});
+                document.querySelector('#myNavigator').popPage();
+              }).catch(function(error) {
+                ons.notification.toast(error.message, { timeout: 1000, animation: 'fall'});
+              });
+          },
+          onTwitterAccount: function() {
+            
+          },
+          onGoogleAccount: function() {
+            signInWithGoogle();
+          },
+          onForgotPassword: function() {
+            document.getElementById("myNavigator").pushPage('password_reset.html');
+          }
+        }
+      });
+    }
+  </script>
+</ons-page>

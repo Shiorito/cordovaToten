@@ -1,0 +1,83 @@
+<ons-page>
+  <div class="background" style="background-color: #FFF;"></div>
+  <div id="myRecodeVue" v-cloak>
+    <div class="tab">
+      <button @click="onArchiveButton" :style="tabActive ? activeTab1 : nonActiveTab1">アーカイブ</button>
+      <button @click="onSavingButton" :style="tabActive ? nonActiveTab2 : activeTab2">セーブ中</button>
+    </div>
+    <div class="recode">
+      <a v-for="data in arr" class="data" @click="onDataButton(data)">
+        <span>{{ data.timestamp.getFullYear() }}/{{ ('0'+(data.timestamp.getMonth()+1)).slice(-2) }}/{{ data.timestamp.getDate() }}</span>
+        <p>{{ data.answers[0] }}</p>
+        <hr>
+      </a>
+    </div>
+    <my-toolbar></my-toolbar>
+  </div>
+
+  <script>
+    ons.getScriptPage().onInit = function() {
+      sBanner();
+      var vm = new Vue({
+        el: '#myRecodeVue',
+        data: {
+          arr: getQuestionAndAnswer(),
+          tabActive: true,
+          activeTab1: {
+            backgroundColor: "#FFF",
+            width: "70pt",
+            zIndex: "10",
+          },
+          nonActiveTab1: {
+            backgroundColor: "#626262",
+            width: "132pt",
+            zIndex: "9",
+            textAlign: "left",
+            paddingLeft: "10pt",
+          },
+          activeTab2: {
+            backgroundColor: "#FFF",
+            width: "70pt",
+            zIndex: "10",
+            left: "81pt",
+          },
+          nonActiveTab2: {
+            backgroundColor: "#626262",
+            width: "132pt",
+            zIndex: "9",
+            left: "19pt",
+            textAlign: "right",
+            paddingRight: "10pt",
+          }
+        },
+        methods: {
+          onArchiveButton: function() {
+            this.tabActive = true;
+            this.arr = getQuestionAndAnswer();
+          },
+          onSavingButton: function() {
+            this.tabActive = false;
+            this.arr = getIncomplete();
+          },
+          onDataButton: function(data) {
+            hBanner();
+            if (data.complete) {
+              document.getElementById("myNavigator").pushPage('result.html', {
+                data: {
+                  qAndA: data,
+                  recode: true,
+                }
+              });
+            } else {
+              document.getElementById("myNavigator").pushPage('resume.html', {
+                data: {
+                  qAndA: data,
+                }
+              })
+            }
+          },
+        }
+      });
+    }
+  </script>
+</ons-page>
