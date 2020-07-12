@@ -409,6 +409,7 @@
               }
               if (this.category.includes("勉強") && this.category.includes("スキルアップ") && this.category.length === 2) {
                 document.querySelector('#myNavigator').pushPage('start.html');
+                localStorage.setItem('tutorial_finished', false);
                 return ;
               }
               ons.notification.toast('「勉強」と「スキルアップ」のカテゴリを選んで下さい', {timeout: 2000, animation: "fall"});

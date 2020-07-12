@@ -241,6 +241,7 @@ Vue.component("skip-modal", {
   `,
   methods: {
     goNext: function() {
+      localStorage.setItem('tutorial_finished', true);
       document.getElementById("myNavigator").pushPage("check_tutorial.html");
     }
   }
