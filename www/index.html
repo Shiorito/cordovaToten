@@ -1253,10 +1253,6 @@
               }
             },
             finishButtonClick: function() {
-              /*if(this.qa.answer != "") {
-                this.qa.why = this.qa.why + this.qa.question + "？";
-                this.items.push(Object.assign({}, this.qa));
-              }*/
               document.getElementById('myNavigator').pushPage('result_tutorial.html');
             },
             closeModal: function() {
@@ -1575,7 +1571,7 @@
       </select>
       <img src="images/チュートリアル_説明4.png" width="90pt" class="explain-suc">
       <button @click="saveButtonClick">完了 </button><br>
-      <a class="twitter-share-button"><ons-icon icon="fa-twitter"></ons-icon> Tweet</button>
+      <a class="twitter-share-button"><ons-icon icon="fa-twitter"></ons-icon> Tweet</button></a>
       <img src="images/チュートリアル_説明5.png" width="106pt" class="explain-tweet">
       <div class="overlay1" v-show="showModal" @click="closeModal">
         <img src="images/分析中_キャラ.png" class="cartoon">
@@ -1584,7 +1580,7 @@
         </div>
       </div>
     </div>
-  
+    -->
     <script>
       var myNavigator = document.querySelector('#myNavigator');
       var vm = new Vue({
@@ -1621,8 +1617,8 @@
           showModal: false,
         },
         created: function() {
-          var vue = this;
-          setTimeout(function() {vue.showModal = true;}, 1000);
+          var t = this;
+          setTimeout(function() {t.showModal = true;}, 1000);
         },
         methods: {
           saveButtonClick: function() {
