@@ -1,0 +1,98 @@
+<ons-page id="analyze">
+  <div class="background"></div>
+  <div class="content">
+    <img class="cartoon" src="./images/分析中_キャラ.png">
+    <div id="analyzeVue" v-cloak>
+      <button @click="showSkipModal = true" class="skip">SKIP</button>
+      <div class="speech">
+        <img src="images/吹き出し/チュートリアル_吹き出し(analyze_tutorial).png">
+      </div>
+      <input type="text" v-model="theme" placeholder="英会話を学びたい">
+      <div>
+        <select v-model="cat[0]">
+          <option disabled value="">カテゴリ</option>
+          <option v-for="n in categories" :value="n">{{ n }}</option>
+        </select>
+        <select v-model="cat[1]">
+          <option disabled value="">カテゴリ</option>
+          <option v-for="n in categories" :value="n">{{ n }}</option>
+        </select>
+        <select v-model="cat[2]">
+          <option disabled value="">カテゴリ</option>
+          <option v-for="n in categories" :value="n">{{ n }}</option>
+        </select>
+      </div>
+      <img class="exp" src="images/チュートリアル_説明1.png" height="130pt">
+      <button @click="nextButtonClick" class="go_question">これを分析！</button>
+      <a @click="helpButtonClick" class="help_button"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
+      <skip-modal v-if="showSkipModal" @close="showSkipModal = false"></skip-modal>
+    </div>
+  </div>
+  
+  <script>
+    ons.getScriptPage().onInit = function () {
+      var qAndA = new QAndA();
+      var vm_a = new Vue({
+        el: '#analyzeVue',
+        data: {
+          theme: "",
+          category: [],
+          cat: [
+            "",
+            "",
+            "",
+          ],
+          showHelpModal: false,
+          categories: [
+            "夢",
+            "欲しいもの",
+            "就活",
+            "研究",
+            "進路",
+            "将来",
+            "勉強",
+            "スキルアップ",
+            "ゼミ",
+            "読書",
+            "資格",
+            "サークル",
+            "部活",
+            "人間関係",
+            "趣味",
+            "自己分析",
+            "1週間後",
+            "1年後",
+            "10年後",
+            "その他",
+          ],
+          showSkipModal: false,
+        },
+        methods: {
+          nextButtonClick: function() {
+            this.category = [];
+            for(var i=0; i<3; i++) {
+              if(this.cat[i] != "") {
+                this.category.push(this.cat[i]);
+              }
+            }
+            if (this.theme != "英会話を学びたい") {
+              ons.notification.toast('テーマに「英会話を学びたい」と入力してください', {timeout: 2000, animation: "fall"});
+              return;
+            }
+            if (this.category.includes("勉強") && this.category.includes("スキルアップ") && this.category.length === 2) {
+              document.querySelector('#myNavigator').pushPage('start.html');
+              return ;
+            }
+            ons.notification.toast('「勉強」と「スキルアップ」のカテゴリを選んで下さい', {timeout: 2000, animation: "fall"});
+          },
+          helpButtonClick: function() {
+            ons.notification.toast('チュートリアルではヘルプを表示できません', {timeout: 1000, animation: "fall"});
+          },
+          closeModal: function() {
+            this.showHelpModal = false;
+          }
+        }
+      });
+    }
+  </script>
+</ons-page>

@@ -14,12 +14,20 @@
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
-		6EC6A10517ED4A338BAA46AE /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B800D729F34A6BAF7064B7 /* CDVViewController+SplashScreen.m */; };
-		908843ED4A1049668E691EC6 /* CDVWKWebViewEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BD64D703866C4083BB1FA152 /* CDVWKWebViewEngine.m */; };
-		A330780E0377479E8D93A682 /* CDVWKWebViewUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EA6A83439741EC803CF246 /* CDVWKWebViewUIDelegate.m */; };
-		C1E70B2FBE4A43B2B8BE239D /* CDVWKProcessPoolFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D12D607E3D4BC398284B8E /* CDVWKProcessPoolFactory.m */; };
-		D43EF3257353499A9E970658 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8B029AADA54BD982FD51BD /* CDVSplashScreen.m */; };
-		DCC45563201940CA80DBB865 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD75802CD924B168C3A51F8 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		831193B6CEBA467891026F92 /* CDVInAppBrowserOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1032C7BBFC481788D56FE9 /* CDVInAppBrowserOptions.m */; };
+		7513C8E1FA07406888A115C1 /* CDVInAppBrowserNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F9A02E3EBC4C0C8D3DF2DC /* CDVInAppBrowserNavigationController.m */; };
+		932A7C6CC10C419FA90AF3D5 /* CDVWKInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAB59C22044EE8B38CB36B /* CDVWKInAppBrowser.m */; };
+		039CD0D45C7D40E1BED79A5D /* CDVWKInAppBrowserUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B7801E82364929AAF91D6B /* CDVWKInAppBrowserUIDelegate.m */; };
+		E3E6EFC44EF04F83A1C13875 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E6D2449DCC4237A5BEECBE /* CDVSplashScreen.m */; };
+		EB5CBBC30B3A432297A29FB1 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = D200FAF1C73749508052239A /* CDVViewController+SplashScreen.m */; };
+		700C5A342937423C895E07BD /* CDVWKWebViewEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D74E15B56DD4ECB9C08DBEA /* CDVWKWebViewEngine.m */; };
+		5ED7344CC77C49CEB16519B0 /* CDVWKWebViewUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 218EE98E98174A3CB6CF156A /* CDVWKWebViewUIDelegate.m */; };
+		BD09B2AB357D4226B0C23DDD /* CDVWKProcessPoolFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C8BAD64FC84C259BB1FFCF /* CDVWKProcessPoolFactory.m */; };
+		3FAE45D434B94D1599A1CB88 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10311CDE2E1547E6B2B43DC0 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C833934226314F4BAAADF69C /* NSString+SSURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E64ABE4644C241E6999B92A1 /* NSString+SSURLEncoding.m */; };
+		5371E9CC72EB4900A8B095F1 /* SocialSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F23ADC2975E4C79AA9D5E45 /* SocialSharing.m */; };
+		8722A51C77E64B6E8FFC16CF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D0A03A2A3E4B13AE0136B1 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C0DFFDF88F97456DA39FCFC4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E3644249B5640689A64F50C /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,13 +55,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0207DA571B56EA530066E2B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Toten/Images.xcassets; sourceTree = SOURCE_ROOT; };
-		0D8B029AADA54BD982FD51BD /* CDVSplashScreen.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVSplashScreen.m; path = "cordova-plugin-splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; };
+		0207DA571B56EA530066E2B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Toten/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* Toten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toten.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Toten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toten.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2F73BEF87A124CF0ADB8D1D5 /* CDVSplashScreen.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVSplashScreen.h; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; };
 		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
 		302D95EE14D2391D003F00A1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -63,21 +69,37 @@
 		3047A5101AB8059700498E2A /* build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-release.xcconfig"; path = "cordova/build-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* Toten-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toten-Prefix.pch"; sourceTree = "<group>"; };
-		37D12D607E3D4BC398284B8E /* CDVWKProcessPoolFactory.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVWKProcessPoolFactory.m; path = "cordova-plugin-wkwebview-engine/CDVWKProcessPoolFactory.m"; sourceTree = "<group>"; };
-		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = Toten/CDVLaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = "Toten/CDVLaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Toten-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Toten-Info.plist"; path = "Toten/Toten-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
-		AD39ABEC01D5439BBA1B3377 /* CDVWKWebViewUIDelegate.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKWebViewUIDelegate.h; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewUIDelegate.h"; sourceTree = "<group>"; };
-		B9A3ED7C1682492FA493CE9D /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; };
-		BD64D703866C4083BB1FA152 /* CDVWKWebViewEngine.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVWKWebViewEngine.m; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewEngine.m"; sourceTree = "<group>"; };
-		C3786B0DAFE84E6683139321 /* CDVWKProcessPoolFactory.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKProcessPoolFactory.h; path = "cordova-plugin-wkwebview-engine/CDVWKProcessPoolFactory.h"; sourceTree = "<group>"; };
-		C8B800D729F34A6BAF7064B7 /* CDVViewController+SplashScreen.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "CDVViewController+SplashScreen.m"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.m"; sourceTree = "<group>"; };
-		D1E37B12DD3F407984CE0A28 /* CDVWKWebViewEngine.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKWebViewEngine.h; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewEngine.h"; sourceTree = "<group>"; };
-		DBD75802CD924B168C3A51F8 /* WebKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
-		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = Toten/config.xml; sourceTree = "<group>"; };
-		F8EA6A83439741EC803CF246 /* CDVWKWebViewUIDelegate.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVWKWebViewUIDelegate.m; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewUIDelegate.m"; sourceTree = "<group>"; };
+		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Toten/config.xml"; sourceTree = "<group>"; };
+		3F1032C7BBFC481788D56FE9 /* CDVInAppBrowserOptions.m */ = {isa = PBXFileReference; name = "CDVInAppBrowserOptions.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowserOptions.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		D6F9A02E3EBC4C0C8D3DF2DC /* CDVInAppBrowserNavigationController.m */ = {isa = PBXFileReference; name = "CDVInAppBrowserNavigationController.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowserNavigationController.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		9FEAB59C22044EE8B38CB36B /* CDVWKInAppBrowser.m */ = {isa = PBXFileReference; name = "CDVWKInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVWKInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		A8B7801E82364929AAF91D6B /* CDVWKInAppBrowserUIDelegate.m */ = {isa = PBXFileReference; name = "CDVWKInAppBrowserUIDelegate.m"; path = "cordova-plugin-inappbrowser/CDVWKInAppBrowserUIDelegate.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		D4907876F5364C6F92A7A8B0 /* CDVInAppBrowserOptions.h */ = {isa = PBXFileReference; name = "CDVInAppBrowserOptions.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowserOptions.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		D5A611E93D8749B3BD7BCEC6 /* CDVInAppBrowserNavigationController.h */ = {isa = PBXFileReference; name = "CDVInAppBrowserNavigationController.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowserNavigationController.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		1B3ED0597D784D3194CB7D91 /* CDVWKInAppBrowser.h */ = {isa = PBXFileReference; name = "CDVWKInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVWKInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		855465EC0BFC4C5ABB1A94E8 /* CDVWKInAppBrowserUIDelegate.h */ = {isa = PBXFileReference; name = "CDVWKInAppBrowserUIDelegate.h"; path = "cordova-plugin-inappbrowser/CDVWKInAppBrowserUIDelegate.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		02E6D2449DCC4237A5BEECBE /* CDVSplashScreen.m */ = {isa = PBXFileReference; name = "CDVSplashScreen.m"; path = "cordova-plugin-splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		D200FAF1C73749508052239A /* CDVViewController+SplashScreen.m */ = {isa = PBXFileReference; name = "CDVViewController+SplashScreen.m"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		E509E4EA965743E199EBF320 /* CDVSplashScreen.h */ = {isa = PBXFileReference; name = "CDVSplashScreen.h"; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		3EC92F8B3605402D83571916 /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		6D74E15B56DD4ECB9C08DBEA /* CDVWKWebViewEngine.m */ = {isa = PBXFileReference; name = "CDVWKWebViewEngine.m"; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewEngine.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		218EE98E98174A3CB6CF156A /* CDVWKWebViewUIDelegate.m */ = {isa = PBXFileReference; name = "CDVWKWebViewUIDelegate.m"; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewUIDelegate.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		C7C8BAD64FC84C259BB1FFCF /* CDVWKProcessPoolFactory.m */ = {isa = PBXFileReference; name = "CDVWKProcessPoolFactory.m"; path = "cordova-plugin-wkwebview-engine/CDVWKProcessPoolFactory.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		BA86C468366E48D494949972 /* CDVWKWebViewEngine.h */ = {isa = PBXFileReference; name = "CDVWKWebViewEngine.h"; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewEngine.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		5EFAD504C83D4FE4B2B1E64B /* CDVWKWebViewUIDelegate.h */ = {isa = PBXFileReference; name = "CDVWKWebViewUIDelegate.h"; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewUIDelegate.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		2045FCD182FA4D85A15A6FE9 /* CDVWKProcessPoolFactory.h */ = {isa = PBXFileReference; name = "CDVWKProcessPoolFactory.h"; path = "cordova-plugin-wkwebview-engine/CDVWKProcessPoolFactory.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		10311CDE2E1547E6B2B43DC0 /* WebKit.framework */ = {isa = PBXFileReference; name = "WebKit.framework"; path = "System/Library/Frameworks/WebKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		E64ABE4644C241E6999B92A1 /* NSString+SSURLEncoding.m */ = {isa = PBXFileReference; name = "NSString+SSURLEncoding.m"; path = "cordova-plugin-x-socialsharing/NSString+SSURLEncoding.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		1F23ADC2975E4C79AA9D5E45 /* SocialSharing.m */ = {isa = PBXFileReference; name = "SocialSharing.m"; path = "cordova-plugin-x-socialsharing/SocialSharing.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		01904E4212C1482C93E05EA2 /* NSString+SSURLEncoding.h */ = {isa = PBXFileReference; name = "NSString+SSURLEncoding.h"; path = "cordova-plugin-x-socialsharing/NSString+SSURLEncoding.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		E37F949F1C69409A944B057D /* SocialSharing.h */ = {isa = PBXFileReference; name = "SocialSharing.h"; path = "cordova-plugin-x-socialsharing/SocialSharing.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		53D0A03A2A3E4B13AE0136B1 /* Social.framework */ = {isa = PBXFileReference; name = "Social.framework"; path = "System/Library/Frameworks/Social.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		0E3644249B5640689A64F50C /* MessageUI.framework */ = {isa = PBXFileReference; name = "MessageUI.framework"; path = "System/Library/Frameworks/MessageUI.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +108,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
-				DCC45563201940CA80DBB865 /* WebKit.framework in Frameworks */,
+				3FAE45D434B94D1599A1CB88 /* WebKit.framework in Frameworks */,
+				8722A51C77E64B6E8FFC16CF /* Social.framework in Frameworks */,
+				C0DFFDF88F97456DA39FCFC4 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +127,7 @@
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 			);
 			name = Classes;
-			path = Toten/Classes;
+			path = "Toten/Classes";
 			sourceTree = SOURCE_ROOT;
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -139,7 +163,7 @@
 				ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */,
 			);
 			name = "Other Sources";
-			path = Toten;
+			path = "Toten";
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -151,13 +175,15 @@
 				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
 			);
 			name = Resources;
-			path = Toten/Resources;
+			path = "Toten/Resources";
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DBD75802CD924B168C3A51F8 /* WebKit.framework */,
+				10311CDE2E1547E6B2B43DC0 /* WebKit.framework */,
+				53D0A03A2A3E4B13AE0136B1 /* Social.framework */,
+				0E3644249B5640689A64F50C /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -184,19 +210,31 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				0D8B029AADA54BD982FD51BD /* CDVSplashScreen.m */,
-				C8B800D729F34A6BAF7064B7 /* CDVViewController+SplashScreen.m */,
-				2F73BEF87A124CF0ADB8D1D5 /* CDVSplashScreen.h */,
-				B9A3ED7C1682492FA493CE9D /* CDVViewController+SplashScreen.h */,
-				BD64D703866C4083BB1FA152 /* CDVWKWebViewEngine.m */,
-				F8EA6A83439741EC803CF246 /* CDVWKWebViewUIDelegate.m */,
-				37D12D607E3D4BC398284B8E /* CDVWKProcessPoolFactory.m */,
-				D1E37B12DD3F407984CE0A28 /* CDVWKWebViewEngine.h */,
-				AD39ABEC01D5439BBA1B3377 /* CDVWKWebViewUIDelegate.h */,
-				C3786B0DAFE84E6683139321 /* CDVWKProcessPoolFactory.h */,
+				3F1032C7BBFC481788D56FE9 /* CDVInAppBrowserOptions.m */,
+				D6F9A02E3EBC4C0C8D3DF2DC /* CDVInAppBrowserNavigationController.m */,
+				9FEAB59C22044EE8B38CB36B /* CDVWKInAppBrowser.m */,
+				A8B7801E82364929AAF91D6B /* CDVWKInAppBrowserUIDelegate.m */,
+				D4907876F5364C6F92A7A8B0 /* CDVInAppBrowserOptions.h */,
+				D5A611E93D8749B3BD7BCEC6 /* CDVInAppBrowserNavigationController.h */,
+				1B3ED0597D784D3194CB7D91 /* CDVWKInAppBrowser.h */,
+				855465EC0BFC4C5ABB1A94E8 /* CDVWKInAppBrowserUIDelegate.h */,
+				02E6D2449DCC4237A5BEECBE /* CDVSplashScreen.m */,
+				D200FAF1C73749508052239A /* CDVViewController+SplashScreen.m */,
+				E509E4EA965743E199EBF320 /* CDVSplashScreen.h */,
+				3EC92F8B3605402D83571916 /* CDVViewController+SplashScreen.h */,
+				6D74E15B56DD4ECB9C08DBEA /* CDVWKWebViewEngine.m */,
+				218EE98E98174A3CB6CF156A /* CDVWKWebViewUIDelegate.m */,
+				C7C8BAD64FC84C259BB1FFCF /* CDVWKProcessPoolFactory.m */,
+				BA86C468366E48D494949972 /* CDVWKWebViewEngine.h */,
+				5EFAD504C83D4FE4B2B1E64B /* CDVWKWebViewUIDelegate.h */,
+				2045FCD182FA4D85A15A6FE9 /* CDVWKProcessPoolFactory.h */,
+				E64ABE4644C241E6999B92A1 /* NSString+SSURLEncoding.m */,
+				1F23ADC2975E4C79AA9D5E45 /* SocialSharing.m */,
+				01904E4212C1482C93E05EA2 /* NSString+SSURLEncoding.h */,
+				E37F949F1C69409A944B057D /* SocialSharing.h */,
 			);
 			name = Plugins;
-			path = Toten/Plugins;
+			path = "Toten/Plugins";
 			sourceTree = SOURCE_ROOT;
 		};
 		EB87FDF11871DA420020F90C /* Staging */ = {
@@ -225,8 +263,8 @@
 			dependencies = (
 				301BF551109A68C00062928A /* PBXTargetDependency */,
 			);
-			name = Toten;
-			productName = Toten;
+			name = "Toten";
+			productName = "Toten";
 			productReference = 1D6058910D05DD3D006BFB54 /* Toten.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -239,8 +277,7 @@
 				LastUpgradeCheck = 510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = QG8SX22RLQ;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -248,11 +285,6 @@
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
-			knownRegions = (
-				English,
-				en,
-				Base,
-			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectReferences = (
@@ -324,11 +356,17 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				D43EF3257353499A9E970658 /* CDVSplashScreen.m in Sources */,
-				6EC6A10517ED4A338BAA46AE /* CDVViewController+SplashScreen.m in Sources */,
-				908843ED4A1049668E691EC6 /* CDVWKWebViewEngine.m in Sources */,
-				A330780E0377479E8D93A682 /* CDVWKWebViewUIDelegate.m in Sources */,
-				C1E70B2FBE4A43B2B8BE239D /* CDVWKProcessPoolFactory.m in Sources */,
+				831193B6CEBA467891026F92 /* CDVInAppBrowserOptions.m in Sources */,
+				7513C8E1FA07406888A115C1 /* CDVInAppBrowserNavigationController.m in Sources */,
+				932A7C6CC10C419FA90AF3D5 /* CDVWKInAppBrowser.m in Sources */,
+				039CD0D45C7D40E1BED79A5D /* CDVWKInAppBrowserUIDelegate.m in Sources */,
+				E3E6EFC44EF04F83A1C13875 /* CDVSplashScreen.m in Sources */,
+				EB5CBBC30B3A432297A29FB1 /* CDVViewController+SplashScreen.m in Sources */,
+				700C5A342937423C895E07BD /* CDVWKWebViewEngine.m in Sources */,
+				5ED7344CC77C49CEB16519B0 /* CDVWKWebViewUIDelegate.m in Sources */,
+				BD09B2AB357D4226B0C23DDD /* CDVWKProcessPoolFactory.m in Sources */,
+				C833934226314F4BAAADF69C /* NSString+SSURLEncoding.m in Sources */,
+				5371E9CC72EB4900A8B095F1 /* SocialSharing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,11 +390,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.0.2;
-				DEVELOPMENT_TEAM = QG8SX22RLQ;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -368,7 +402,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.Murasya.toten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = toten_dev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WK_WEB_VIEW_ONLY = 1;
 			};
@@ -383,11 +416,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1.0.2;
-				DEVELOPMENT_TEAM = QG8SX22RLQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Toten/Toten-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -397,7 +426,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.Murasya.toten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WK_WEB_VIEW_ONLY = 1;
 			};
@@ -407,7 +435,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3047A5111AB8059700498E2A /* build.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -440,10 +467,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.Murasya.toten;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.Murasya.toten;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 			};
 			name = Debug;
 		};
@@ -451,7 +479,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3047A5111AB8059700498E2A /* build.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -482,10 +509,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.Murasya.toten;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.Murasya.toten;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 			};
 			name = Release;
 		};

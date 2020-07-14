@@ -1,0 +1,103 @@
+<ons-page>
+  <div class="background" style="background-color: #E8F6FD;"></div>
+  <div id="resultVue" class="resultVue" v-cloak>
+    <p class="theme">{{ theme }}</p>
+    <span class="category">
+      <span v-for="n in category">{{ n }}&emsp;</span>
+    </span>
+    <div v-for="index in answers.length-1" class="items">
+      <p :class='tags[index-1] == "" ? defoClass : (tags[index-1] == "out" ? lightClass : blueClass)'>{{ index }}</p>
+      <p>{{ questions[index] }}</p>
+      <p>{{ answers[index] }}</p>
+    </div>
+    <textarea v-model="memo" v-if="recode == false" placeholder="感想を入力"></textarea>
+    <div v-else class="memo">{{ memo }}</div>
+    <p style="font-size: 11pt; color: #767676; margin-top: 30px;" v-show="recode==false">分析はうまくいった？</p>
+    <select v-model="success" v-if="recode == false">
+      <option>はい</option>
+      <option>いいえ</option>
+      <option>どちらともいえない</option>
+    </select><br>
+    <span class="success" v-if="recode == true">分析はうまくいった？<ons-icon icon="fa-arrow-right"></ons-icon>{{ success }}</span>
+    <button v-show="recode == false" @click="saveButtonClick">記録する</button><br>
+    <a @click="onTweet" class="twitter-share-button"><ons-icon icon="fa-twitter"></ons-icon> Tweet</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <my-toolbar v-show="recode == true"></my-toolbar>
+  </div>
+
+  <script>
+    var myNavigator = document.querySelector('#myNavigator');
+    ons.getScriptPage().onInit = function() {
+      var qAndA = myNavigator.topPage.data.qAndA;
+      var recode = false;
+      if(myNavigator.topPage.data.recode) {
+        recode = true;
+      }
+      console.log(qAndA);
+      vm = new Vue({
+        el: '#resultVue',
+        data: {
+          theme: qAndA.answers[0],
+          category: qAndA.category,
+          questions: qAndA.questions,
+          answers: qAndA.answers,
+          tags: qAndA.tags,
+          memo: qAndA.memo,
+          success: qAndA.success,
+          category: qAndA.category,
+          recode: recode,
+          defoClass: "defo",
+          lightClass: "lightBlue",
+          blueClass: "blue",
+          tweet: {
+            text: "",
+            url: "http://toten.html.xdomain.jp/",
+          }
+        },
+        methods: {
+          saveButtonClick: function() {
+            if (this.memo == "") {
+              ons.notification.toast("感想を書いてください", {timeout: 1000, animation: "fall"});
+              return;
+            }
+            if (this.success == "") {
+              ons.notification.toast("分析が成功したか選んでください", {timeout: 1000, animation: "fall"});
+              return;
+            }
+            qAndA.memo = this.memo;
+            qAndA.success = this.success;
+            qAndA.category = this.category;
+            qAndA.complete = true;
+            updateData(qAndA);
+            myNavigator.resetToPage('index.html');
+            sInt();
+          },
+          onTweet: function() {
+            if (this.memo == "") {
+              ons.notification.toast("感想を書いてください", {timeout: 1000, animation: "fall"});
+              return;
+            }
+            if (this.success == "") {
+              ons.notification.toast("分析が成功したか選んでください", {timeout: 1000, animation: "fall"});
+              return;
+            }
+            qAndA.memo = this.memo;
+            qAndA.success = this.success;
+            qAndA.category = this.category;
+            qAndA.public = true;
+            qAndA.complete = true;
+            updateData(qAndA);
+            this.tweet.text = "<" + this.theme + ">" + "を分析しました!\n\nスタート：" + this.answers[1] + "\n↓\nゴール：" + this.answers[this.answers.length-1]
+                              + "\n\n#とーてん";
+            for(var i=0; i<this.category.length; i++) {
+              this.tweet.text += " #" + this.category[i];
+            }
+            this.tweet.text += "\n";
+            this.tweet.url += "?id=" + qAndA.id;
+            window.plugins.socialsharing.shareViaTwitter(this.tweet.text, null, this.tweet.url);
+          },
+        }
+      });
+    }
+  </script>
+</ons-page>
