@@ -140,7 +140,8 @@
               document.getElementById("myNavigator").pushPage('feedback.html');
             },
             urlClick: function() {
-              window.open("https://noteappm.wixsite.com/policies", "_system", "location=no");
+              openUrl("https://noteappm.wixsite.com/policies", true);
+              //cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
             }
           },
         });
@@ -1468,8 +1469,8 @@
       </select><br>
       <span class="success" v-if="recode == true">分析はうまくいった？<ons-icon icon="fa-arrow-right"></ons-icon>{{ success }}</span>
       <button v-show="recode == false" @click="saveButtonClick">記録する</button><br>
-      <a @click="onTweet" class="twitter-share-button"><ons-icon icon="fa-twitter"></ons-icon> Tweet</a>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <!--<a @click="onTweet" class="twitter-share-button"><ons-icon icon="fa-twitter"></ons-icon> Tweet</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
       <my-toolbar v-show="recode == true"></my-toolbar>
     </div>
   
@@ -1580,7 +1581,6 @@
         </div>
       </div>
     </div>
-    -->
     <script>
       var myNavigator = document.querySelector('#myNavigator');
       var vm = new Vue({
