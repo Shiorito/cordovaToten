@@ -1,6 +1,9 @@
 # Cordova Global
 plugins/
 
+#面倒なのでplatformごと無視
+platforms/
+
 # iOS Platform
 platforms/ios/build/
 platforms/ios/www/
