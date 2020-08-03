@@ -25,9 +25,7 @@
 		8722A51C77E64B6E8FFC16CF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D0A03A2A3E4B13AE0136B1 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		932A7C6CC10C419FA90AF3D5 /* CDVWKInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAB59C22044EE8B38CB36B /* CDVWKInAppBrowser.m */; };
 		BD09B2AB357D4226B0C23DDD /* CDVWKProcessPoolFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C8BAD64FC84C259BB1FFCF /* CDVWKProcessPoolFactory.m */; };
-		C0DFFDF88F97456DA39FCFC4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E3644249B5640689A64F50C /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C833934226314F4BAAADF69C /* NSString+SSURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E64ABE4644C241E6999B92A1 /* NSString+SSURLEncoding.m */; };
-		D7DBF6A4210446AD8A07A89D /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C47D5C5D0C478F994EE0E3 /* SafariServices.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E3E6EFC44EF04F83A1C13875 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E6D2449DCC4237A5BEECBE /* CDVSplashScreen.m */; };
 		EB5CBBC30B3A432297A29FB1 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = D200FAF1C73749508052239A /* CDVViewController+SplashScreen.m */; };
 /* End PBXBuildFile section */
@@ -61,13 +59,11 @@
 		0207DA571B56EA530066E2B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Toten/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		02E6D2449DCC4237A5BEECBE /* CDVSplashScreen.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVSplashScreen.m; path = "cordova-plugin-splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; };
 		03464E29529C4E6DACE92F55 /* SafariViewController.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = SafariViewController.m; path = "cordova-plugin-safariviewcontroller/SafariViewController.m"; sourceTree = "<group>"; };
-		0E3644249B5640689A64F50C /* MessageUI.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		10311CDE2E1547E6B2B43DC0 /* WebKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		13C47D5C5D0C478F994EE0E3 /* SafariServices.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		1B3ED0597D784D3194CB7D91 /* CDVWKInAppBrowser.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKInAppBrowser.h; path = "cordova-plugin-inappbrowser/CDVWKInAppBrowser.h"; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* Toten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toten.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* とーてん.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "とーてん.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F23ADC2975E4C79AA9D5E45 /* SocialSharing.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = SocialSharing.m; path = "cordova-plugin-x-socialsharing/SocialSharing.m"; sourceTree = "<group>"; };
 		2045FCD182FA4D85A15A6FE9 /* CDVWKProcessPoolFactory.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKProcessPoolFactory.h; path = "cordova-plugin-wkwebview-engine/CDVWKProcessPoolFactory.h"; sourceTree = "<group>"; };
 		218EE98E98174A3CB6CF156A /* CDVWKWebViewUIDelegate.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVWKWebViewUIDelegate.m; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewUIDelegate.m"; sourceTree = "<group>"; };
@@ -115,8 +111,6 @@
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				3FAE45D434B94D1599A1CB88 /* WebKit.framework in Frameworks */,
 				8722A51C77E64B6E8FFC16CF /* Social.framework in Frameworks */,
-				C0DFFDF88F97456DA39FCFC4 /* MessageUI.framework in Frameworks */,
-				D7DBF6A4210446AD8A07A89D /* SafariServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +133,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Toten.app */,
+				1D6058910D05DD3D006BFB54 /* とーてん.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,8 +183,6 @@
 			children = (
 				10311CDE2E1547E6B2B43DC0 /* WebKit.framework */,
 				53D0A03A2A3E4B13AE0136B1 /* Social.framework */,
-				0E3644249B5640689A64F50C /* MessageUI.framework */,
-				13C47D5C5D0C478F994EE0E3 /* SafariServices.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -274,7 +266,7 @@
 			);
 			name = Toten;
 			productName = Toten;
-			productReference = 1D6058910D05DD3D006BFB54 /* Toten.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* とーてん.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -408,8 +400,12 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.10;
 				DEVELOPMENT_TEAM = QG8SX22RLQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Toten/Plugins/cordova-admob-sdk\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -419,9 +415,9 @@
 				INFOPLIST_FILE = "Toten/Toten-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.Murasya.toten;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "とーてん";
 				PROVISIONING_PROFILE_SPECIFIER = toten_dev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WK_WEB_VIEW_ONLY = 1;
@@ -440,8 +436,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.10;
 				DEVELOPMENT_TEAM = QG8SX22RLQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Toten/Plugins/cordova-admob-sdk\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Toten/Toten-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -449,9 +449,9 @@
 				INFOPLIST_FILE = "Toten/Toten-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.Murasya.toten;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "とーてん";
 				PROVISIONING_PROFILE_SPECIFIER = toten_dev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WK_WEB_VIEW_ONLY = 1;

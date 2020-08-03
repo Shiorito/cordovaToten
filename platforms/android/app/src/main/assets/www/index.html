@@ -140,7 +140,8 @@
               document.getElementById("myNavigator").pushPage('feedback.html');
             },
             urlClick: function() {
-              openUrl("https://noteappm.wixsite.com/policies", true);
+              window.open("https://noteappm.wixsite.com/policies", "_self", "location=yes");
+              //openUrl("https://noteappm.wixsite.com/policies", true);
               //cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
             }
           },
@@ -1345,7 +1346,8 @@
       <a @click="document.getElementById('myNavigator').popPage()" style="align-self: flex-start;background-color: #B1B1B1;display: block; padding: 20px; color: #FFF;"><ons-icon icon="fa-chevron-left"></ons-icon> キャンセル</a>
       <ul>
         <li>アカウント登録を行うことにより、<a @click="urlClick">利用規約</a>・<a @click="urlClick">プライバシーポリシー</a>に同意したものとみなします。</li><br>
-        <li>メールアドレスおよび連携サービスのDMにアプリ改善のためのアンケート等をお送りする場合がございます。あらかじめご了承ください。</li>
+        <li>メールアドレスおよび連携サービスのDMにアプリ改善のためのアンケート等をお送りする場合がございます。あらかじめご了承ください。</li><br>
+        <li>個人情報は記入必須ではありません。</li>
       </ul>
       <div class="form">
         <p>メールアドレス</p>
@@ -1354,6 +1356,7 @@
         <input type="password" id="password_register" v-model="password" placeholder="入力してください">
         <p>性別</p>
         <select v-model="sex">
+          <option disabled>性別</option>
           <option value="男">男</option>
           <option value="女">女</option>
           <option value="その他">その他</option>
@@ -1361,6 +1364,7 @@
         <p>生年月日</p>
         <div>
           <select v-model="year" @change="get_days">
+            <option disabled>年</option>
             <option v-for="n in 100" :value="n + 1920">{{ n + 1920 }}</option>
           </select>年
           <select v-model="month" @change="get_days">
@@ -1372,6 +1376,7 @@
         </div>
         <p>職業</p>
         <select v-model="occupation">
+          <option disabled>職業</option>
           <option v-for="n in occupation_list" :value="n">{{ n }}</option>
         </select>
       </div>
@@ -1392,12 +1397,12 @@
           data: {
             email: "",
             password: "",
-            sex: "男",
-            year: 2020,
-            month: 1,
-            day: 1,
+            sex: "",
+            year: 0,
+            month: 0,
+            day: 0,
             days_max: "",
-            occupation: "学生",
+            occupation: "",
             occupation_list: [
               "学生",
               "会社員",
@@ -1414,9 +1419,10 @@
           methods: {
             onRegister: function() {
               var day = new Date(this.year, this.month-1, this.day);
-              var user = new User(this.uid, this.email, day, this.sex, this.occupation);
+              var user = new User("", this.email, day, this.sex, this.occupation);
               firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-                .then(function() {
+                .then(function(result) {
+                  user.uid = result.user.uid;
                   setNewUser(user);
                   document.querySelector('#myNavigator').resetToPage("index.html");
                   firebase.auth().currentUser.sendEmailVerification().then(function() {
@@ -1437,7 +1443,7 @@
               console.log(log);
             },
             urlClick: function() {
-              window.open("https://noteappm.wixsite.com/policies", "_system", "location=no,usewkwebview=yes");
+              window.open("https://noteappm.wixsite.com/policies", "_self", "location=no");
             }
           }
         });
@@ -1572,8 +1578,10 @@
       </select>
       <img src="images/チュートリアル_説明4.png" width="90pt" class="explain-suc">
       <button @click="saveButtonClick">完了 </button><br>
+      <!--
       <a class="twitter-share-button"><ons-icon icon="fa-twitter"></ons-icon> Tweet</button></a>
       <img src="images/チュートリアル_説明5.png" width="106pt" class="explain-tweet">
+      -->
       <div class="overlay1" v-show="showModal" @click="closeModal">
         <img src="images/分析中_キャラ.png" class="cartoon">
         <div class="speech">
