@@ -39,9 +39,9 @@
       "cordova-plugin-safariviewcontroller": {}
     },
     "platforms": [
-      "android",
       "browser",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

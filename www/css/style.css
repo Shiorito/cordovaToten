@@ -18,36 +18,6 @@ button:focus {
   width: 70%;
 }
 
-.toolbar_wrapper {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #E8E8E8;
-  z-index: 100;
-  text-align: center;
-}
-
-.toolbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 60px;
-  align-items: center;
-}
-.toolbar div {
-  display: flex;
-  flex-direction: column;
-  width: 60px;
-  text-align: center;
-}
-.toolbar span {
-  font-size: 9px;
-  color: #585858;
-}
-.toolbar img {
-  margin: 0 auto;
-}
 header {
   background-color: rgba(255, 255, 255, 1.0);
   position: fixed;

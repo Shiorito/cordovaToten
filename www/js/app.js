@@ -249,19 +249,19 @@ Vue.component("skip-modal", {
 
 Vue.component("my-toolbar", {
   template: `
-    <div class="toolbar_wrapper">
-      <div class="toolbar">
-        <div @click="goAnalyze">
-          <img src="images/タブバー_新アイコン/analysis_アイコン.png" height="30px"></img>
-          <span>分析</span>
+    <div class="my-toolbar">
+      <div class="my-toolbar__list">
+        <div class="my-toolbar__item" @click="goAnalyze">
+          <img class="my-toolbar__logo" src="images/タブバー_新アイコン/analysis_アイコン.png" height="30px"></img>
+          <span class="my-toolbar__title">分析</span>
         </div>
-        <div @click="goHome">
-          <img src="images/タブバー_新アイコン/home_アイコン.png" height="30px"></img>
-          <span>ホーム</span>
+        <div class="my-toolbar__item" @click="goHome">
+          <img class="my-toolbar__logo" src="images/タブバー_新アイコン/home_アイコン.png" height="30px"></img>
+          <span class="my-toolbar__title">ホーム</span>
         </div>
-        <div @click="goArchive">
-          <img src="images/タブバー_新アイコン/archives_アイコン.png" height="30px"></img>
-          <span>アーカイブ</span>
+        <div class="my-toolbar__item" @click="goArchive">
+          <img class="my-toolbar__logo" src="images/タブバー_新アイコン/archives_アイコン.png" height="30px"></img>
+          <span class="my-toolbar__title">アーカイブ</span>
         </div>
       </div>
     </div>

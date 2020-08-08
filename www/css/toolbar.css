@@ -1,0 +1,27 @@
+.my-toolbar {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: #E8E8E8;
+  z-index: 100;
+}
+.my-toolbar__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 60px;
+  align-items: center;
+}
+.my-toolbar__item {
+  display: flex;
+  flex-direction: column;
+}
+.my-toolbar__title {
+  font-size: 9px;
+  color: #585858;
+  text-align: center;
+}
+.my-toolbar__logo {
+  margin: 0 auto;
+  height: 30px;
+}
