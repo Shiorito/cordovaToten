@@ -203,9 +203,10 @@ function deleteData(id) {
 }
 
 function createFeedback(text) {
-  var uid = firebase.auth().currentUser;
+  var user = firebase.auth().currentUser;
+  console.log("HOGE");
   db.collection("feedback").add({
-    uid: uid,
+    uid: user.uid,
     text: text,
   }).then(function(doc) {
     console.log('Document written with ID: ', doc.id);
