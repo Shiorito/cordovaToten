@@ -15,8 +15,14 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <icon src="res/icon/icon.png" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <!-- <splash src="res/screen/android/splash_hdpi@1.5x.9.png" density="land-hdpi"/>
+        <splash src="res/screen/android/splash_ldpi@0.75x.9.png" density="land-ldpi"/>
+        <splash src="res/screen/android/splash_mdpi.9.png" density="land-mdpi"/>
+        <splash src="res/screen/android/splash_xhdpi@2x.9.png" density="land-xhdpi"/> -->
+        <!-- <preference name="android-targetSdkVersion" value="28" /> -->
     </platform>
     <platform name="ios">
         <preference name="WKWebViewOnly" value="true" />
