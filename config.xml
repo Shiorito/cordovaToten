@@ -18,10 +18,12 @@
     <icon src="res/icon/icon.png" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <!-- <splash src="res/screen/android/splash_hdpi@1.5x.9.png" density="land-hdpi"/>
-        <splash src="res/screen/android/splash_ldpi@0.75x.9.png" density="land-ldpi"/>
-        <splash src="res/screen/android/splash_mdpi.9.png" density="land-mdpi"/>
-        <splash src="res/screen/android/splash_xhdpi@2x.9.png" density="land-xhdpi"/> -->
+        <splash src="res/screen/android/splash_200_320.png" density="land-ldpi"/>
+        <splash src="res/screen/android/splash_360_640.png" density="land-mdpi"/>
+        <splash src="res/screen/android/splash_480_800.png" density="land-hdpi"/>
+        <splash src="res/screen/android/splash_720_1280.png" density="land-xhdpi"/>
+        <splash src="res/screen/android/splash_1080_1920.png" density="land-xxhdpi"/>
+        <splash src="res/screen/android/splash_1440_2560.png" density="land-xxxhdpi"/>
         <!-- <preference name="android-targetSdkVersion" value="28" /> -->
     </platform>
     <platform name="ios">
