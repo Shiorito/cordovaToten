@@ -9,6 +9,8 @@
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/toolbar.css">
+  <link rel="stylesheet" href="css/hamberger.css">
+  <link rel="stylesheet" href="css/analyze.css">
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
 
@@ -213,30 +215,28 @@
 
 <template id="analyze.html">
   <ons-page id="analyze">
-    <div class="background"></div>
+    <div class="background analyze__background"></div>
     <div class="content">
-      <img class="cartoon" src="./images/分析中_キャラ.png">
-      <div id="analyzeVue" v-cloak>
-        <div class="speech">
-          <img src="images/吹き出し/分析_吹き出し(analyze).png">
-        </div>
-        <input type="text" v-model="theme" placeholder="テーマを入力">
+      <div id="analyzeVue" v-cloak class="analyze">
+        <img class="analyze__tenchan" src="./images/分析中_キャラ.png">
+        <img src="images/吹き出し/分析_吹き出し(analyze).png" class="analyze__speech">
+        <input class="analyze__thema" type="text" v-model="theme" placeholder="テーマを入力">
         <div>
-          <select v-model="cat[0]">
+          <select v-model="cat[0]" class="analyze__category">
             <option disabled value="">カテゴリ</option>
             <option v-for="n in categories" :value="n">{{ n }}</option>
           </select>
-          <select v-model="cat[1]">
+          <select v-model="cat[1]" class="analyze__category">
             <option disabled value="">カテゴリ</option>
             <option v-for="n in categories" :value="n">{{ n }}</option>
           </select>
-          <select v-model="cat[2]">
+          <select v-model="cat[2]" class="analyze__category">
             <option disabled value="">カテゴリ</option>
             <option v-for="n in categories" :value="n">{{ n }}</option>
           </select>
         </div>
-        <button @click="nextButtonClick" class="go_question">これを分析！</button>
-        <a @click="helpButtonClick" class="help_button"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
+        <button @click="nextButtonClick" class="analyze__next-button">これを分析！</button>
+        <a @click="helpButtonClick" class="analyze__help-button"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
         <my-toolbar></my-toolbar>
       </div>
     </div>

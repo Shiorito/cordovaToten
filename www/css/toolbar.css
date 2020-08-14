@@ -15,11 +15,13 @@
 .my-toolbar__item {
   display: flex;
   flex-direction: column;
+  width: 60px;
 }
 .my-toolbar__title {
   font-size: 9px;
   color: #585858;
   text-align: center;
+  margin: 3px;
 }
 .my-toolbar__logo {
   margin: 0 auto;

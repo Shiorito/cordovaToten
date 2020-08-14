@@ -1,0 +1,122 @@
+.menu_btn {
+  width: 30pt;
+  height: 30pt;
+  padding: 4pt;
+  margin-left: 10px;
+}
+.menu_trigger {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.menu_trigger span {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2pt;
+  background: #333;
+  border-radius: 2pt;
+  transition: all 0.5s;
+}
+.menu_btn .menu_trigger span:nth-of-type(1) {
+  top: 8pt;
+}
+.menu_btn .menu_trigger span:nth-of-type(2) {
+  top: calc(50% - 1pt);
+}
+.menu_btn .menu_trigger span:nth-of-type(3) {
+  bottom: 8pt;
+}
+.menu_btn.open_ .menu_trigger span:nth-of-type(1) {
+  top: calc(50% - 1pt);
+  transform: rotate(-45deg);
+}
+.menu_btn.open_ .menu_trigger span:nth-of-type(2) {
+  opacity: 0;
+}
+.menu_btn.open_ .menu_trigger span:nth-of-type(3) {
+  bottom: calc(50% - 1pt);
+  transform: rotate(45deg);
+}
+.nav {
+  position: fixed;
+  top: 40pt;
+  left: 0;
+  width: 40%;
+  z-index: 99;
+  background-color: rgba(237,106,76,0.8);
+  transition: all .5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  padding-left: 23pt;
+  padding-top: 10pt;
+}
+.nav.v-enter, .nav.v-leave-to {
+  opacity: 0;
+}
+.nav .signout {
+  margin: 5pt 0;
+  height: 28pt;
+}
+.acd-check {
+  display: none;
+}
+.acd-label:before {
+  display: inline-block;
+  content: "";
+  width: 28pt;
+  height: 28pt;
+  background: url("../images/options_アイコン.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-right: 5pt;
+}
+.acd-content {
+  height: 0;
+  opacity: 0;
+  transition: .5s;
+  visibility: hidden;
+  font-size: 10pt;
+  color: #4B4B4B;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: solid 1pt #4B4B4B;
+  text-align: left;
+  margin-left: 20pt;
+  margin-bottom: 15px;
+}
+.acd-content a {
+  text-decoration: none;
+  color: #4B4B4B;
+}
+.acd-check:checked + .acd-label + .acd-content {
+  height: 80pt;
+  opacity: 1;
+  padding-left: 10pt;
+  visibility: visible;
+}
+.acd-check:not(:checked) + .acd-label:after {
+  font-family: "Font Awesome 5 Free";
+  content: '\f107';
+  font-weight: 900;
+}
+.acd-check:checked + .acd-label:after {
+  font-family: "Font Awesome 5 Free";
+  content: '\f106';
+  font-weight: 900;
+}
+.nav .signout:before {
+  display: inline-block;
+  content: "";
+  width: 28pt;
+  height: 28pt;
+  background: url("../images/signout_アイコン.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-right: 5pt;
+}
