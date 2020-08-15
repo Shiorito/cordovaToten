@@ -11,6 +11,11 @@
   <link rel="stylesheet" href="css/toolbar.css">
   <link rel="stylesheet" href="css/hamberger.css">
   <link rel="stylesheet" href="css/analyze.css">
+  <link rel="stylesheet" href="css/question.css">
+  <link rel="stylesheet" href="css/tenchan.css">
+  <link rel="stylesheet" href="css/overlay.css">
+  <link rel="stylesheet" href="css/tutorial.css">
+  <link rel="stylesheet" href="css/result.css">
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
 
@@ -24,7 +29,7 @@
   <script src="js/app.js"></script>
 </head>
 <body>
-  <ons-navigator swapable id="myNavigator" page="index.html"></ons-navigator>
+  <ons-navigator swapable id="myNavigator" page="result_tutorial.html"></ons-navigator>
 </body>
 </html>
 
@@ -218,8 +223,8 @@
     <div class="background analyze__background"></div>
     <div class="content">
       <div id="analyzeVue" v-cloak class="analyze">
-        <img class="analyze__tenchan" src="./images/分析中_キャラ.png">
-        <img src="images/吹き出し/分析_吹き出し(analyze).png" class="analyze__speech">
+        <img class="tenchan__lefttop" src="./images/分析中_キャラ.png">
+        <img src="images/吹き出し/分析_吹き出し(analyze).png" class="tenchan__comment">
         <input class="analyze__thema" type="text" v-model="theme" placeholder="テーマを入力">
         <div>
           <select v-model="cat[0]" class="analyze__category">
@@ -330,32 +335,30 @@
 
 <template id="analyze_tutorial.html">
   <ons-page id="analyze">
-    <div class="background"></div>
+    <div class="background analyze__background"></div>
     <div class="content">
-      <img class="cartoon" src="./images/分析中_キャラ.png">
-      <div id="analyzeVue" v-cloak>
-        <button @click="showSkipModal = true" class="skip">SKIP</button>
-        <div class="speech">
-          <img src="images/吹き出し/チュートリアル_吹き出し(analyze_tutorial).png">
-        </div>
-        <input type="text" v-model="theme" placeholder="英会話を学びたい">
+      <div id="analyzeVue" v-cloak class="analyze">
+        <img class="tenchan__lefttop" src="./images/分析中_キャラ.png">
+        <button @click="showSkipModal = true" class="tutorial__skip">SKIP</button>
+        <img class="tenchan__comment" src="images/吹き出し/チュートリアル_吹き出し(analyze_tutorial).png">
+        <input class="analyze__thema" type="text" v-model="theme" placeholder="英会話を学びたい">
         <div>
-          <select v-model="cat[0]">
+          <select v-model="cat[0]" class="analyze__category">
             <option disabled value="">カテゴリ</option>
             <option v-for="n in categories" :value="n">{{ n }}</option>
           </select>
-          <select v-model="cat[1]">
+          <select v-model="cat[1]" class="analyze__category">
             <option disabled value="">カテゴリ</option>
             <option v-for="n in categories" :value="n">{{ n }}</option>
           </select>
-          <select v-model="cat[2]">
+          <select v-model="cat[2]" class="analyze__category">
             <option disabled value="">カテゴリ</option>
             <option v-for="n in categories" :value="n">{{ n }}</option>
           </select>
         </div>
-        <img class="exp" src="images/チュートリアル_説明1.png" height="130pt">
-        <button @click="nextButtonClick" class="go_question">これを分析！</button>
-        <a @click="helpButtonClick" class="help_button"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
+        <img class="tutorial__analyze" src="images/チュートリアル_説明1.png">
+        <button @click="nextButtonClick" class="analyze__next-button">これを分析！</button>
+        <a @click="helpButtonClick" class="analyze__help-button"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
         <skip-modal v-if="showSkipModal" @close="showSkipModal = false"></skip-modal>
       </div>
     </div>
@@ -865,57 +868,50 @@
 
 <template id="question.html">
   <ons-page>
-    <div class="background" style="background-color: #E8F6FD;"></div>
-    <div id="questionVue" v-cloak>
-      <div class="theme">
-        <p>{{ theme }}</p>
-      </div>
+    <div class="background" style="background-color: hsl(200, 84%, 95%);"></div>
+    <div id="questionVue" v-cloak class="question">
+      <p class="question__theme">{{ theme }}</p>
       <div v-for="item in items" class="items">
         <p :class='item.tag == "out" ? "lightBlue" : "blue"'>{{ item.num }}</p>
         <p>{{ item.why }}</p>
         <p>{{ item.answer }}</p>
       </div>
-      <ons-icon icon="fa-arrow-down" v-show="qa.num != 1"></ons-icon>
-      <div class="writting">
+      <ons-icon class="down-arrow" icon="fa-arrow-down" v-show="qa.num != 1"></ons-icon>
+      <div class="question__writting">
         <a @click="onNumber" :class="numberClass">{{ qa.num }}</a>
-        <p>{{ qa.why }}<input v-show="qa.num >= 2" type="text" v-model="qa.question">？</p>
-        <textarea v-model="qa.answer"></textarea>
+        <p class="question__why">{{ qa.why }}<input class="question__question" v-show="qa.num >= 2" type="text" v-model="qa.question">？</p>
+        <textarea v-model="qa.answer" class="question__answer"></textarea>
       </div>
-      <div class="buttons">
-        <div>
+      <div class="question__buttons">
+        <div class="question__buttons--left">
           <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="40px"></a>
           <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" width="40px"></a>
         </div>
-        <div>
+        <div class="question__buttons--right">
           <a v-show="qa.num >= 5" @click="finishButtonClick" style="margin-left: 20px;"><img src="./images/各種ボタン/finish_ボタン.png" alt="finishボタン" height="70px"></a>
           <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  height="70px"></a>  
         </div>
       </div>
-      <div class="overlay saving" v-show="showSavingModal" @click="closeModal">
-        <p>分析を中断しますか？</p>
+      <div class="overlay__save" v-show="showSavingModal" @click="closeModal">
+        <p class="overlay__save--string">分析を中断しますか？</p>
         <div>
-          <button @click="savingButton">はい</button>
-          <button @click="closeModal">いいえ</button>
+          <button class="overlay__save--yesbtn" @click="savingButton">はい</button>
+          <button class="overlay__save--nobtn" @click="closeModal">いいえ</button>
         </div>
       </div>
-      <div class="overlay1" v-show="showModal1" @click="closeModal">
-        <img class="cartoon" src="images/分析中_キャラ.png">
-        <div class="speech">
-          <img src="images/吹き出し/分析_吹き出し(comment1).png">
-        </div>
+      <div class="overlay" v-show="showModal1" @click="closeModal">
+        <img class="tenchan__lefttop" src="images/分析中_キャラ.png">
+        <img class="tenchan__comment" src="images/吹き出し/分析_吹き出し(comment1).png">
       </div>
-      <div class="overlay1" v-show="showModal2" @click="closeModal">
-        <img class="cartoon" src="images/分析中_キャラ2.png">
-        <div class="speech">
-          <img src="images/吹き出し/分析_吹き出し(comment2).png">
-        </div>
+      <div class="overlay" v-show="showModal2" @click="closeModal">
+        <img class="tenchan__lefttop" src="images/分析中_キャラ2.png">
+        <img class="tenchan__comment" src="images/吹き出し/分析_吹き出し(comment2).png">
       </div>
-      <div class="overlay2" v-show="showModal3" @click="showModal3 = false">
-        <img class="cartoon" src="images/分析中_キャラ3.png">
-        <div class="speech">
-          <a @click="showModal3 = false"><img src="images/各種ボタン/help-back_ボタン.png" width="77px"></a>
-          <img src="images/吹き出し/分析_吹き出し(comment3).png" width="252px">
-          <button @click="closeModal3">記録する</button>
+      <div class="overlay" v-show="showModal3" @click="showModal3 = false">
+        <img class="tenchan__lefttop" src="images/分析中_キャラ3.png">
+        <img class="tenchan__comment" src="images/吹き出し/分析_吹き出し(comment3).png">
+        <button class="overlay--finbtn" @click="closeModal3">記録する</button>
+        <a class="overlay--backbtn" @click="showModal3 = false"><img src="images/各種ボタン/help-back_ボタン.png" width="77px"></a>
         </div>
       </div>
     </div>
@@ -1078,9 +1074,9 @@
 <template id="question_tutorial.html">
   <ons-page>
     <div class="background" style="background-color: #E8F6FD;"></div>
-    <div id="questionVue" v-cloak>
-      <button @click="showSkipModal = true" class="skip">SKIP</button>
-      <div class="theme">
+    <div id="questionVue" v-cloak class="question">
+      <button @click="showSkipModal = true" class="tutorial__skip">SKIP</button>
+      <div class="question__theme">
         <p>{{ theme }}</p>
       </div>
       <div v-for="item in items" class="items">
@@ -1088,61 +1084,51 @@
         <p>{{ item.why }}</p>
         <p>{{ item.answer }}</p>
       </div>
-      <ons-icon icon="fa-arrow-down" v-show="qa.num != 1"></ons-icon>
-      <img src="images/チュートリアル_説明3-1.png" class="explain-que" v-show="qa.num == 2" width="122px">
-      <div class="writting">
+      <ons-icon class="down-arrow" icon="fa-arrow-down" v-show="qa.num != 1"></ons-icon>
+      <img src="images/チュートリアル_説明3-1.png" class="tutorial__question--que" v-show="qa.num == 2" width="122px">
+      <div class="question__writting">
         <a @click="onNumber" :class="numberClass">{{ qa.num }}</a>
-        <p>{{ qa.why }}<input v-show="qa.num >= 2" type="text" v-model="qa.question" :placeholder="placeholder_que">？</p>
-        <textarea v-model="qa.answer" :placeholder="placeholder_ans"></textarea>
+        <p class="question__why">{{ qa.why }}<input class="question__question" v-show="qa.num >= 2" type="text" v-model="qa.question" :placeholder="placeholder_que">？</p>
+        <textarea class="question__answer" v-model="qa.answer" :placeholder="placeholder_ans"></textarea>
       </div>
-      <img src="images/チュートリアル_説明2-1.png" class="explain-ans" v-show="qa.num == 1" width="250px">
-      <img src="images/チュートリアル_説明2-2.png" class="explain-tag" v-show="qa.num == 1" width="260px">
-      <img src="images/チュートリアル_説明3-2.png" class="explain-ans" v-show="qa.num == 2" width="253px">
-      <img src="images/チュートリアル_説明3-3.png" class="explain-tag" v-show="qa.num == 2" width="250px">
-      <div class="buttons">
-        <div>
+      <img src="images/チュートリアル_説明2-1.png" class="tutorial__question--ans" v-show="qa.num == 1" width="250px">
+      <img src="images/チュートリアル_説明2-2.png" class="tutorial__question--tag" v-show="qa.num == 1" width="260px">
+      <img src="images/チュートリアル_説明3-2.png" class="tutorial__question--ans" v-show="qa.num == 2" width="253px">
+      <img src="images/チュートリアル_説明3-3.png" class="tutorial__question--tag" v-show="qa.num == 2" width="250px">
+      <div class="question__buttons">
+        <div class="question__buttons--left">
           <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" height="30px">ヘルプ</a>
           <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" height="30px">途中セーブ</a>
         </div>
-        <div>
+        <div class="question__buttons--right">
           <input type="image" src="./images/各種ボタン/finish_ボタン.png" v-show="qa.num >= 5" @click="finishButtonClick" style="margin-left: 20px;" width="70px">
           <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  width="70px"></a>
         </div>
       </div>
-      <div class="overlay" v-show="showSavingModal" @click="closeModal">
-        <p>分析を中断しますか？</p>
-        <button @click="savingButton">はい</button>
-        <button @click="closeModal">いいえ</button>
+      <div class="overlay__save" v-show="showSavingModal" @click="closeModal">
+        <p class="overlay__save--string">分析を中断しますか？</p>
+        <button class="overlay__save--yesbtn" @click="savingButton">はい</button>
+        <button class="overlay__save--nobtn" @click="closeModal">いいえ</button>
       </div>
-      <div class="overlay1" v-show="show1Modal" @click="closeModal">
-        <img src="images/チュートリアル_ウインク_キャラ.png" class="cartoon">
-        <div class="speech">
-          <img src="images/吹き出し/チュートリアル_吹き出し(modal1).png">
-        </div>
+      <div class="overlay" v-show="show1Modal" @click="closeModal">
+        <img class="tenchan__lefttop" src="images/チュートリアル_ウインク_キャラ.png">
+        <img class="tenchan__comment" src="images/吹き出し/チュートリアル_吹き出し(modal1).png">
       </div>
-      <div class="overlay1" v-show="show2Modal" @click="closeModal">
-        <img src="images/分析中_キャラ.png" class="cartoon">
-        <div class="speech">
-          <img src="images/吹き出し/チュートリアル_吹き出し(modal2).png">
-        </div>
+      <div class="overlay" v-show="show2Modal" @click="closeModal">
+        <img class="tenchan__lefttop" src="images/分析中_キャラ.png">
+        <img class="tenchan__comment" src="images/吹き出し/チュートリアル_吹き出し(modal2).png">
       </div>
-      <div class="overlay1" v-show="show3Modal" @click="closeModal">
-        <img src="images/分析中_キャラ.png" class="cartoon">
-        <div class="speech">
-          <img src="images/吹き出し/チュートリアル_吹き出し(modal3).png">
-        </div>
+      <div class="overlay" v-show="show3Modal" @click="closeModal">
+        <img class="tenchan__lefttop" src="images/分析中_キャラ.png">
+        <img class="tenchan__comment" src="images/吹き出し/チュートリアル_吹き出し(modal3).png">
       </div>
-      <div class="overlay1" v-show="show4Modal" @click="closeModal">
-        <img src="images/チュートリアル_キリッと_キャラ.png" class="cartoon">
-        <div class="speech">
-          <img src="images/吹き出し/チュートリアル_吹き出し(modal4).png">
-        </div>
+      <div class="overlay" v-show="show4Modal" @click="closeModal">
+        <img class="tenchan__lefttop" src="images/チュートリアル_キリッと_キャラ.png">
+        <img class="tenchan__comment" src="images/吹き出し/チュートリアル_吹き出し(modal4).png">
       </div>
-      <div class="overlay1" v-show="show5Modal" @click="closeModal">
-        <img src="images/チュートリアル_疲れた_キャラ.png" class="cartoon">
-        <div class="speech">
-          <img src="images/吹き出し/チュートリアル_吹き出し(modal5).png">
-        </div>
+      <div class="overlay" v-show="show5Modal" @click="closeModal">
+        <img class="tenchan__lefttop" src="images/チュートリアル_疲れた_キャラ.png">
+        <img class="tenchan__comment" src="images/吹き出し/チュートリアル_吹き出し(modal5).png">
       </div>
       <skip-modal v-if="showSkipModal" @close="showSkipModal = false"></skip-modal>
     </div>
@@ -1456,9 +1442,9 @@
 <template id="result.html">
   <ons-page>
     <div class="background" style="background-color: #E8F6FD;"></div>
-    <div id="resultVue" class="resultVue" v-cloak>
-      <p class="theme">{{ theme }}</p>
-      <span class="category">
+    <div id="resultVue" class="result" v-cloak>
+      <p class="result__theme">{{ theme }}</p>
+      <span class="result__category">
         <span v-for="n in category">{{ n }}&emsp;</span>
       </span>
       <div v-for="index in answers.length-1" class="items">
@@ -1466,17 +1452,17 @@
         <p>{{ questions[index] }}</p>
         <p>{{ answers[index] }}</p>
       </div>
-      <textarea v-model="memo" v-if="recode == false" placeholder="感想を入力"></textarea>
-      <div v-else class="memo">{{ memo }}</div>
+      <textarea class="result__memo" v-model="memo" v-if="recode == false" placeholder="感想を入力"></textarea>
+      <div v-else class="result__memo--readonly">{{ memo }}</div>
       <p style="font-size: 11pt; color: #767676; margin-top: 30px;" v-show="recode==false">分析はうまくいった？</p>
-      <select v-model="success" v-if="recode == false">
+      <select v-model="success" v-if="recode == false" class="result__success">
         <option>はい</option>
         <option>いいえ</option>
         <option>どちらともいえない</option>
       </select><br>
-      <span class="success" v-if="recode == true">分析はうまくいった？<ons-icon icon="fa-arrow-right"></ons-icon>{{ success }}</span>
-      <button v-show="recode == false" @click="saveButtonClick">記録する</button><br>
-      <!--<a @click="onTweet" class="twitter-share-button"><ons-icon icon="fa-twitter"></ons-icon> Tweet</a>
+      <span class="result__success--readonly" v-if="recode == true">分析はうまくいった？<ons-icon icon="fa-arrow-right"></ons-icon>{{ success }}</span>
+      <button v-show="recode == false" @click="saveButtonClick">記録する</button>
+      <!--<a @click="onTweet" class="result__tweetbtn"><ons-icon icon="fa-twitter"></ons-icon> Tweet</a>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
       <my-toolbar v-show="recode == true"></my-toolbar>
     </div>
@@ -1562,32 +1548,30 @@
 <template id="result_tutorial.html">
   <ons-page>
     <div class="background" style="background-color: #E8F6FD;"></div>
-    <div id="result_t" class="resultVue" v-cloak>
-      <p class="theme">{{ theme }}</p>
-      <span class="category">勉強 スキルアップ</span>
+    <div id="result_t" class="result" v-cloak>
+      <p class="result__theme">{{ theme }}</p>
+      <span class="result__category">勉強 スキルアップ</span>
       <div v-for="(value, index) in questions" class="items">
         <p :class='tags[index] == "out" ? "lightBlue" : "blue"'>{{ index+1 }}</p>
         <p>{{ questions[index] }}</p>
         <p>{{ answers[index] }}</p>
       </div>
-      <textarea v-model="memo" readonly></textarea>
+      <textarea v-model="memo" readonly class="result__memo"></textarea>
       <p style="font-size: 11pt; color: #767676;">分析はうまくいった？</p>
-      <select v-model="success">
+      <select v-model="success" class="result__success">
         <option value="はい">はい</option>
         <option value="いいえ">いいえ</option>
         <option value="どちらともいえない">どちらともいえない</option>
       </select>
-      <img src="images/チュートリアル_説明4.png" width="90pt" class="explain-suc">
-      <button @click="saveButtonClick">完了 </button><br>
+      <img src="images/チュートリアル_説明4.png" width="90pt" class="tutorial__result--suc">
+      <button class="result__savebtn" @click="saveButtonClick">完了</button>
       <!--
-      <a class="twitter-share-button"><ons-icon icon="fa-twitter"></ons-icon> Tweet</button></a>
-      <img src="images/チュートリアル_説明5.png" width="106pt" class="explain-tweet">
+      <a class="result__tweetbtn"><ons-icon icon="fa-twitter"></ons-icon> Tweet</button></a>
+      <img src="images/チュートリアル_説明5.png" width="106pt" class="tutorial__result--tweet">
       -->
-      <div class="overlay1" v-show="showModal" @click="closeModal">
-        <img src="images/分析中_キャラ.png" class="cartoon">
-        <div class="speech">
-          <img src="images/吹き出し/チュートリアル_吹き出し(modal6).png">
-        </div>
+      <div class="overlay" v-show="showModal" @click="closeModal">
+        <img class="tenchan__lefttop" src="images/分析中_キャラ.png">
+        <img class="tenchan__comment" src="images/吹き出し/チュートリアル_吹き出し(modal6).png">
       </div>
     </div>
     <script>

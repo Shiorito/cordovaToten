@@ -1,0 +1,47 @@
+.tutorial__skip {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 8pt;
+  border: none;
+  height: 30px;
+  background-color: rgba(219, 219, 219, 1);
+  color: rgba(106, 106, 106, 1);
+  z-index: 10;
+}
+.tutorial__analyze {
+  height: 130px;
+  position: absolute;
+  top: 410px;
+  right: 40px;
+}
+.tutorial__question--ans {
+  position: relative;
+  top: -10pt;
+  left: 20%;
+  z-index: 30;
+}
+.tutorial__question--que {
+  display: block;
+  position: absolute;
+  top: 175pt;
+  right: 30pt;
+  z-index: 30;
+}
+.tutorial__question--tag {
+  display: block;
+  position: relative;
+  left: 20pt;
+  top: -80pt;
+  z-index: 30;
+}
+.tutorial__result--suc {
+  position: relative;
+  top: -30pt;
+  left: 30%;
+}
+.tutorial__result--tweet {
+  position: relative;
+  top: -30pt;
+  left: 80pt;
+}

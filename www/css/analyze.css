@@ -11,17 +11,6 @@
   background-size: cover;
 }
 
-.analyze__tenchan {
-  position: absolute;
-  top: -15%;
-  left: -40%;
-  width: 70%;
-}
-
-.analyze__speech {
-  width: 252px;
-}
-
 .analyze__thema {
   border: 1pt solid #DE4D2B;
   border-top: none;

@@ -1,0 +1,12 @@
+.tenchan__lefttop {
+  position: absolute;
+  top: -15%;
+  left: -40%;
+  height: 35%;
+}
+.tenchan__comment {
+  width: 252px;
+  text-align: center;
+  display: block;
+  margin: 35% auto 0;
+}
