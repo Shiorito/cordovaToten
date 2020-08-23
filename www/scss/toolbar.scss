@@ -1,0 +1,49 @@
+.my-toolbar {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: #FFF;
+  z-index: 100;
+  border-top: solid 0.5px #D3D3D3;
+  text-align: center;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 60px;
+  }
+
+  %__item {
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    padding-top: 10px;
+  }
+
+  &__item {
+    @extend %__item;
+    border-top: solid 3px #FFF;
+    &--active {
+      @extend %__item;
+      border-top: solid 3px #ED6A4C;
+    }
+  }
+  &__title {
+    font-size: 10px;
+    color: #585858;
+    text-align: center;
+    margin: 3px;
+
+    &--active {
+      font-size: 10px;
+      text-align: center;
+      margin: 3px;
+      color: #ED6A4C;
+    }
+  } 
+  &__logo {
+    margin: 0 auto;
+    height: 30px;
+  }
+}

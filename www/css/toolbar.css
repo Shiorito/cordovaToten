@@ -5,26 +5,41 @@
   background-color: #FFF;
   z-index: 100;
   border-top: solid 0.5px #D3D3D3;
+  text-align: center;
 }
 .my-toolbar__list {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   height: 60px;
-  align-items: center;
 }
-.my-toolbar__item {
+.my-toolbar .my-toolbar__item, .my-toolbar .my-toolbar__item--active {
   display: flex;
   flex-direction: column;
   width: 60px;
+  padding-top: 10px;
+}
+.my-toolbar__item {
+  border-top: solid 3px #FFF;
+}
+.my-toolbar__item--active {
+  border-top: solid 3px #ED6A4C;
 }
 .my-toolbar__title {
-  font-size: 9px;
+  font-size: 10px;
   color: #585858;
   text-align: center;
   margin: 3px;
+}
+.my-toolbar__title--active {
+  font-size: 10px;
+  text-align: center;
+  margin: 3px;
+  color: #ED6A4C;
 }
 .my-toolbar__logo {
   margin: 0 auto;
   height: 30px;
 }
+
+/*# sourceMappingURL=toolbar.css.map */

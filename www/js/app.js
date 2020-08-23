@@ -248,35 +248,77 @@ Vue.component("skip-modal", {
   }
 });
 
+var toolbar_active = 1;
 Vue.component("my-toolbar", {
   template: `
     <div class="my-toolbar">
       <div class="my-toolbar__list">
-        <div class="my-toolbar__item" @click="goAnalyze">
+        <div :class="analyzeItem" @click="goAnalyze">
           <img class="my-toolbar__logo" src="images/タブバー_新アイコン/analysis_アイコン.png" height="30px"></img>
-          <span class="my-toolbar__title">分析</span>
+          <span :class="analyzeClass">分析</span>
         </div>
-        <div class="my-toolbar__item" @click="goHome">
+        <div :class="homeItem" @click="goHome">
           <img class="my-toolbar__logo" src="images/タブバー_新アイコン/home_アイコン.png" height="30px"></img>
-          <span class="my-toolbar__title">ホーム</span>
+          <span :class="homeClass">ホーム</span>
         </div>
-        <div class="my-toolbar__item" @click="goArchive">
+        <div :class="arcItem" @click="goArchive">
           <img class="my-toolbar__logo" src="images/タブバー_新アイコン/archives_アイコン.png" height="30px"></img>
-          <span class="my-toolbar__title">アーカイブ</span>
+          <span :class="arcClass">アーカイブ</span>
         </div>
       </div>
     </div>
   `,
   methods: {
     goAnalyze: function() {
+      toolbar_active = 0;
       document.getElementById("myNavigator").resetToPage("analyze.html");
     },
     goHome: function() {
+      toolbar_active = 1;
       document.getElementById("myNavigator").resetToPage("index.html");
     },
     goArchive: function() {
+      toolbar_active = 2;
       document.getElementById("myNavigator").resetToPage("myRecode.html");
-    }
+    },
+  },
+  computed: {
+    analyzeClass: function() {
+      return {
+        'my-toolbar__title': toolbar_active != 0,
+        'my-toolbar__title--active': toolbar_active == 0,
+      }
+    },
+    homeClass: function() {
+      return {
+        'my-toolbar__title': toolbar_active != 1,
+        'my-toolbar__title--active': toolbar_active == 1,
+      }
+    },
+    arcClass: function() {
+      return {
+        'my-toolbar__title': toolbar_active != 2,
+        'my-toolbar__title--active': toolbar_active == 2,
+      }
+    },
+    analyzeItem: function() {
+      return {
+        'my-toolbar__item': toolbar_active != 0,
+        'my-toolbar__item--active': toolbar_active == 0,
+      }
+    },
+    homeItem: function() {
+      return {
+        'my-toolbar__item': toolbar_active != 1,
+        'my-toolbar__item--active': toolbar_active == 1,
+      }
+    },
+    arcItem: function() {
+      return {
+        'my-toolbar__item': toolbar_active != 2,
+        'my-toolbar__item--active': toolbar_active == 2,
+      }
+    },
   }
 });
 
