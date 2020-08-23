@@ -1,0 +1,64 @@
+/* myRecode */
+.recode__tab {
+  position: sticky;
+  top: 0;
+  background-color: #E0836E;
+  height: 97px;
+  width: 100%;
+  z-index: 1;
+}
+.recode__tab--archive {
+  position: absolute;
+  left: 19pt;
+  top: 50px;
+  height: 26pt;
+  border-radius: 13pt;
+  border: none;
+  font-size: 10pt;
+}
+.recode__tab--saving {
+  position: absolute;
+  top: 50px;
+  height: 26pt;
+  border-radius: 13pt;
+  border: none;
+  font-size: 10pt;
+}
+.recode {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 100px;
+}
+.data {
+  position: relative;
+  display: block;
+  width: 90%;
+  margin: 12px auto 0;
+}
+.data span {
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: 10px;
+  color: #626262;
+  margin: 0;
+  padding: 5px 21px;
+  background-color: #E8F6FD;
+  border-radius: 5px;
+}
+.data p {
+  position: relative;
+  top: -3px;
+  font-size: 12px;
+  margin: 0;
+  padding: 12px 0 18px 21px;
+  background-color: #E8F6FD;
+  border-radius: 5px;
+
+}
+.data hr {
+  position: relative;
+  bottom: 17px;
+  margin: 0 21px;
+}

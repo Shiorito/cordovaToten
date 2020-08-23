@@ -2,8 +2,9 @@
   position: fixed;
   bottom: 0;
   width: 100vw;
-  background-color: #E8E8E8;
+  background-color: #FFF;
   z-index: 100;
+  border-top: solid 0.5px #D3D3D3;
 }
 .my-toolbar__list {
   display: flex;

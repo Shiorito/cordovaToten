@@ -37,7 +37,8 @@
 .analyze__next-button {
   border-radius: 8pt;
   border: none;
-  height: 30px;
+  height: 40px;
+  font-size: 15px;
   margin-top: 25px;
   background-color: rgba(237, 106, 76, 1);
   color: #FFF;

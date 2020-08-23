@@ -12,8 +12,8 @@
 .tutorial__analyze {
   height: 130px;
   position: absolute;
-  top: 410px;
-  right: 40px;
+  top: 430px;
+  right: 20px;
 }
 .tutorial__question--ans {
   position: relative;
@@ -24,8 +24,8 @@
 .tutorial__question--que {
   display: block;
   position: absolute;
-  top: 175pt;
-  right: 30pt;
+  top: 190px;
+  right: 30px;
   z-index: 30;
 }
 .tutorial__question--tag {

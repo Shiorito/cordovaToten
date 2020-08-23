@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
   <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="css/overlay.css">
   <link rel="stylesheet" href="css/tutorial.css">
   <link rel="stylesheet" href="css/result.css">
+  <link rel="stylesheet" href="css/recode.css">
+  <link rel="stylesheet" href="css/feedback.css">
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
 
@@ -29,7 +31,7 @@
   <script src="js/app.js"></script>
 </head>
 <body>
-  <ons-navigator swapable id="myNavigator" page="result_tutorial.html"></ons-navigator>
+  <ons-navigator swapable id="myNavigator" page="index.html"></ons-navigator>
 </body>
 </html>
 
@@ -241,7 +243,7 @@
           </select>
         </div>
         <button @click="nextButtonClick" class="analyze__next-button">これを分析！</button>
-        <a @click="helpButtonClick" class="analyze__help-button"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
+        <a class="analyze__help-button" @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" width="40px"></a>
         <my-toolbar></my-toolbar>
       </div>
     </div>
@@ -512,16 +514,16 @@
   <ons-page>
     <div class="background" style="background-color: #F7F7F7;"></div>
     <div id="feedback" v-cloak>
-      <div class="head">
-        <a @click="popBack"><ons-icon icon="fa-chevron-left"></ons-icon> キャンセル</a>
-        <h1>フィードバック</h1>
+      <div class="feedback__head">
+        <a class="feedback__cancel" @click="popBack"><ons-icon icon="fa-chevron-left"></ons-icon> キャンセル</a>
+        <h1 class="feedback__head--h1">フィードバック</h1>
       </div>
-      <form>
-        <p>サービス・使い方に関して気になることや改善すべき点に<br>ついて、下記フォームへご記入ください。</p>    
-        <textarea v-model="text"></textarea>
-        <input type="button" value="送信" @click="sendMail">
+      <form class="feedback__form">
+        <p class="feedback__exp">サービス・使い方に関して気になることや改善すべき点に<br>ついて、下記フォームへご記入ください。</p>    
+        <textarea class="feedback__textarea" v-model="text"></textarea>
+        <button class="feedback__submit" @click="sendMail">送信</button>
       </form>
-      <div class="overlay" v-show="showModal" @click="closeModal">
+      <div class="feedback__overlay" v-show="showModal" @click="closeModal">
         <div>
           <a @click="closeModal"><ons-icon icon="fa-window-close"></ons-icon></a>
           <h2>ありがとうございます。</h2>
@@ -738,11 +740,11 @@
   <ons-page>
     <div class="background" style="background-color: #FFF;"></div>
     <div id="myRecodeVue" v-cloak>
-      <div class="tab">
-        <button @click="onArchiveButton" :style="tabActive ? activeTab1 : nonActiveTab1">アーカイブ</button>
-        <button @click="onSavingButton" :style="tabActive ? nonActiveTab2 : activeTab2">セーブ中</button>
+      <div class="recode__tab">
+        <button class="recode__tab--archive" @click="onArchiveButton" :style="tabActive ? activeTab1 : nonActiveTab1">アーカイブ</button>
+        <button class="recode__tab--saving" @click="onSavingButton" :style="tabActive ? nonActiveTab2 : activeTab2">セーブ中</button>
       </div>
-      <div class="recode">
+      <div class="recode" id="GD">
         <a v-for="data in arr" class="data" @click="onDataButton(data)">
           <span>{{ data.timestamp.getFullYear() }}/{{ ('0'+(data.timestamp.getMonth()+1)).slice(-2) }}/{{ data.timestamp.getDate() }}</span>
           <p>{{ data.answers[0] }}</p>
@@ -870,7 +872,13 @@
   <ons-page>
     <div class="background" style="background-color: hsl(200, 84%, 95%);"></div>
     <div id="questionVue" v-cloak class="question">
-      <p class="question__theme">{{ theme }}</p>
+      <div class="question__header">
+        <p class="question__theme">{{ theme }}</p>
+        <div class="question__topbuttons">
+          <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" width="30px"></a>
+          <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="30px"></a>
+        </div>
+      </div>
       <div v-for="item in items" class="items">
         <p :class='item.tag == "out" ? "lightBlue" : "blue"'>{{ item.num }}</p>
         <p>{{ item.why }}</p>
@@ -883,14 +891,8 @@
         <textarea v-model="qa.answer" class="question__answer"></textarea>
       </div>
       <div class="question__buttons">
-        <div class="question__buttons--left">
-          <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" width="40px"></a>
-          <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" width="40px"></a>
-        </div>
-        <div class="question__buttons--right">
-          <a v-show="qa.num >= 5" @click="finishButtonClick" style="margin-left: 20px;"><img src="./images/各種ボタン/finish_ボタン.png" alt="finishボタン" height="70px"></a>
-          <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  height="70px"></a>  
-        </div>
+        <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  height="90px"></a>
+        <a v-show="qa.num >= 5" @click="finishButtonClick" style="margin-left: 20px;"><img src="./images/各種ボタン/finish_ボタン.png" alt="finishボタン" height="75px"></a>
       </div>
       <div class="overlay__save" v-show="showSavingModal" @click="closeModal">
         <p class="overlay__save--string">分析を中断しますか？</p>
@@ -1076,8 +1078,12 @@
     <div class="background" style="background-color: #E8F6FD;"></div>
     <div id="questionVue" v-cloak class="question">
       <button @click="showSkipModal = true" class="tutorial__skip">SKIP</button>
-      <div class="question__theme">
-        <p>{{ theme }}</p>
+      <div class="question__header">
+        <p class="question__theme">{{ theme }}</p>
+        <div class="question__topbuttons">
+          <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" height="30px"></a>
+          <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" height="30px"></a>
+        </div>
       </div>
       <div v-for="item in items" class="items">
         <p :class='item.tag == "out" ? "lightBlue" : "blue"'>{{ item.num }}</p>
@@ -1096,14 +1102,8 @@
       <img src="images/チュートリアル_説明3-2.png" class="tutorial__question--ans" v-show="qa.num == 2" width="253px">
       <img src="images/チュートリアル_説明3-3.png" class="tutorial__question--tag" v-show="qa.num == 2" width="250px">
       <div class="question__buttons">
-        <div class="question__buttons--left">
-          <a @click="helpButtonClick"><img src="./images/各種ボタン/help_ボタン.png" alt="ヘルプボタン" height="30px">ヘルプ</a>
-          <a @click="interruptionButtonClick"><img src="./images/各種ボタン/break_ボタン.png" alt="中断ボタン" height="30px">途中セーブ</a>
-        </div>
-        <div class="question__buttons--right">
-          <input type="image" src="./images/各種ボタン/finish_ボタン.png" v-show="qa.num >= 5" @click="finishButtonClick" style="margin-left: 20px;" width="70px">
-          <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  width="70px"></a>
-        </div>
+        <a @click="nextButtonClick"><img src="./images/各種ボタン/next_ボタン.png" alt="Nextボタン"  width="90px"></a>
+        <input type="image" src="./images/各種ボタン/finish_ボタン.png" v-show="qa.num >= 5" @click="finishButtonClick" style="margin-left: 20px;" width="75px">
       </div>
       <div class="overlay__save" v-show="showSavingModal" @click="closeModal">
         <p class="overlay__save--string">分析を中断しますか？</p>
@@ -1461,7 +1461,7 @@
         <option>どちらともいえない</option>
       </select><br>
       <span class="result__success--readonly" v-if="recode == true">分析はうまくいった？<ons-icon icon="fa-arrow-right"></ons-icon>{{ success }}</span>
-      <button v-show="recode == false" @click="saveButtonClick">記録する</button>
+      <button class="result__savebtn" v-show="recode == false" @click="saveButtonClick">完了</button>
       <!--<a @click="onTweet" class="result__tweetbtn"><ons-icon icon="fa-twitter"></ons-icon> Tweet</a>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
       <my-toolbar v-show="recode == true"></my-toolbar>

@@ -31,7 +31,7 @@
   border-right: none;
   background: none;
   margin: 45pt 10% 0;
-  font-size: 11pt;
+  font-size: 13px;
   resize: none;
 }
 .result__memo--readonly {
@@ -40,7 +40,7 @@
   border-bottom: solid 1.5pt #DE4D2B;
   border-left: solid 1.5pt #DE4D2B;
   background: none;
-  font-size: 11px;
+  font-size: 13px;
   padding: 0 0 11pt 6pt;
   margin-top: 50px;
   width: 80%;
@@ -71,6 +71,7 @@
   color: #FFF;
   box-shadow: 0 0 6pt rgba(0, 0, 0, 0.29);
   border: none;
+  font-size: 15px;
 }
 .result__tweetbtn {
   width: 75pt;
