@@ -348,6 +348,7 @@ if( /(android)/i.test(navigator.userAgent) ) {
 function initialization() {
   if(typeof admob === 'undefined') {
     console.log("admob undefined");
+    ons.notificatin.toast("admob undefined");
     return ;
   }
 

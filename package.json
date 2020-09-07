@@ -13,14 +13,17 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "dependencies": {
+    "cordova-admob-sdk": "0.24.1",
     "cordova-android": "^8.1.0",
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^5.1.1",
+    "cordova-plugin-admob-free": "0.27.0",
     "cordova-plugin-inappbrowser": "^4.0.0",
     "cordova-plugin-safariviewcontroller": "^1.6.0",
     "cordova-plugin-splashscreen": "^5.0.4",
     "cordova-plugin-wkwebview-engine": "^1.2.1",
     "cordova-plugin-x-socialsharing": "^5.6.8",
+    "cordova-promise-polyfill": "0.0.2",
     "es6-promise-plugin": "^4.2.2"
   },
   "devDependencies": {
@@ -36,7 +39,10 @@
         "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly."
       },
       "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-safariviewcontroller": {}
+      "cordova-plugin-safariviewcontroller": {},
+      "cordova-plugin-admob-free": {
+        "ADMOB_APP_ID": "ca-app-pub-8657757436017103~1121360773"
+      }
     },
     "platforms": [
       "browser",

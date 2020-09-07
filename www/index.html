@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="css/result.css">
   <link rel="stylesheet" href="css/recode.css">
   <link rel="stylesheet" href="css/feedback.css">
+  <link rel="stylesheet" href="css/register.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="stylesheet" href="css/password-reset.css">
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
 
@@ -173,18 +176,18 @@
 
 <template id="account.html">
   <ons-page id="account">
-    <div id="signIn">
+    <div id="signIn" class="account">
       <a @click="document.getElementById('myNavigator').popPage()" style="align-self: flex-start; margin-left: 30px;"><ons-icon icon="fa-chevron-left"></ons-icon> キャンセル</a>
-      <p>SIGN IN</p>
-      <div>
-        <input type="email" id="email" v-model="email" placeholder="メールアドレス">
-        <input type="password" id="password" v-model="password" placeholder="パスワード">
-        <a @click="onLoginAccount"><img src="images/各種ボタン/signin実行_ボタン.png" width="50px"></a>
+      <p class="account__title">SIGN IN</p>
+      <div class="account__form">
+        <input type="email" class="account__input" v-model="email" placeholder="メールアドレス">
+        <input type="password" class="account__input" v-model="password" placeholder="パスワード">
+        <a class="account__go-btn" @click="onLoginAccount"><img src="images/各種ボタン/signin実行_ボタン.png" width="50px"></a>
         <!-- <hr>
         <button @click="onTwitterAccount" class="twitter_login"><ons-icon icon="fa-twitter"></ons-icon> Twitterアカウントでサインイン</button>
         <button @click="onGoogleAccount" class="google_login"><ons-icon icon="fa-google"></ons-icon> Googleアカウントでサインイン</button> -->
       </div>
-      <a class="forgot_password" @click="onForgotPassword">パスワードを忘れた場合</a>
+      <a class="account__forgot-pass" @click="onForgotPassword">パスワードを忘れた場合</a>
     </div>
     <script>
       ons.getScriptPage().onInit = function() {
@@ -208,7 +211,7 @@
               
             },
             onGoogleAccount: function() {
-              signInWithGoogle();
+              //signInWithGoogle();
             },
             onForgotPassword: function() {
               document.getElementById("myNavigator").pushPage('password_reset.html');
@@ -825,14 +828,14 @@
 <template id="password_reset.html">
   <ons-page>
     <div class="background" style="background-color: #F9D6CC;"></div>
-    <div id="password_reset" class="password_reset">
+    <div id="password_reset" class="password-reset">
       <a @click="document.getElementById('myNavigator').popPage()" style="align-self: flex-start; margin-left: 30px;"><ons-icon icon="fa-chevron-left"></ons-icon> キャンセル</a>
-      <h1>パスワードを忘れた場合</h1>
-      <div>
-        <p>ご登録いただいたメールアドレスを入力してください。<br>
+      <h1 class="password-reset__title">パスワードを忘れた場合</h1>
+      <div class="password-reset__form">
+        <p class="password-reset__explain">ご登録いただいたメールアドレスを入力してください。<br>
           パスワード再設定用のメールを送信します。</p>
-        <input type="mail" placeholder="メールアドレス" v-model="mail">
-        <button @click="onSendMail">メールを送信</button>
+        <input class="password-reset__input" type="mail" placeholder="メールアドレス" v-model="mail">
+        <button class="password-reset__go-btn" @click="onSendMail">メールを送信</button>
       </div>
     </div>
     <script>
@@ -1329,27 +1332,27 @@
 
 <template id="register.html">
   <ons-page>
-    <div id="register" v-cloak>
+    <div id="register" class="register" v-cloak>
       <a @click="document.getElementById('myNavigator').popPage()" style="align-self: flex-start;background-color: #B1B1B1;display: block; padding: 20px; color: #FFF;"><ons-icon icon="fa-chevron-left"></ons-icon> キャンセル</a>
-      <ul>
-        <li>アカウント登録を行うことにより、<a @click="urlClick">利用規約</a>・<a @click="urlClick">プライバシーポリシー</a>に同意したものとみなします。</li><br>
-        <li>メールアドレスおよび連携サービスのDMにアプリ改善のためのアンケート等をお送りする場合がございます。あらかじめご了承ください。</li><br>
-        <li>個人情報は記入必須ではありません。</li>
+      <ul class="register__explain">
+        <li class="register__explain-item">アカウント登録を行うことにより、<a @click="urlClick" class="register__link">利用規約</a>・<a @click="urlClick" class="register__link">プライバシーポリシー</a>に同意したものとみなします。</li><br>
+        <li class="register__explain-item">メールアドレスおよび連携サービスのDMにアプリ改善のためのアンケート等をお送りする場合がございます。あらかじめご了承ください。</li><br>
+        <li class="register__explain-item">個人情報は記入必須ではありません。</li>
       </ul>
-      <div class="form">
-        <p>メールアドレス</p>
-        <input type="email" id="email_register" v-model="email" placeholder="入力してください">
-        <p>パスワード</p>
-        <input type="password" id="password_register" v-model="password" placeholder="入力してください">
-        <p>性別</p>
+      <div class="register__form">
+        <p class="register__title">メールアドレス</p>
+        <input class="register__input" type="email" id="email_register" v-model="email" placeholder="入力してください">
+        <p class="register__title">パスワード</p>
+        <input class="register__input" type="password" id="password_register" v-model="password" placeholder="入力してください">
+        <p class="register__title">性別</p>
         <select v-model="sex">
           <option disabled>性別</option>
           <option value="男">男</option>
           <option value="女">女</option>
           <option value="その他">その他</option>
         </select>
-        <p>生年月日</p>
-        <div>
+        <p class="register__title">生年月日</p>
+        <div class="register__birthday">
           <select v-model="year" @change="get_days">
             <option disabled>年</option>
             <option v-for="n in 100" :value="n + 1920">{{ n + 1920 }}</option>
@@ -1361,14 +1364,14 @@
             <option v-for="n in days_max" :value="n">{{ n }}</option>
           </select>日
         </div>
-        <p>職業</p>
+        <p class="register__title">職業</p>
         <select v-model="occupation">
           <option disabled>職業</option>
           <option v-for="n in occupation_list" :value="n">{{ n }}</option>
         </select>
       </div>
-      <div class="btns">
-        <button @click="onRegister" class="send_mail_btn">仮登録メールを送信</button>
+      <div class="register__btns">
+        <button @click="onRegister" class="register__send-btn">仮登録メールを送信</button>
         <!-- <hr>
         <h3>他のアカウントで登録</h3>
         <div>

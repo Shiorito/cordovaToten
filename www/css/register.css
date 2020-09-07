@@ -1,0 +1,63 @@
+.register {
+  background-color: #F7C7B9;
+  height: 100%;
+  width: 100%;
+  text-align: left;
+}
+.register__explain {
+  background-color: #FFF;
+  margin: 0;
+  padding: 20px 30px 20px 50px;
+}
+.register__explain-item {
+  font-size: 11px;
+}
+.register__link {
+  color: #ED6A4C;
+  text-decoration: underline;
+}
+.register__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 50px;
+}
+.register__title {
+  font-size: 12px;
+  margin: 12px 0 0;
+}
+.register__input {
+  border-radius: 22pt;
+  border: solid 0.8pt #707070;
+  padding: 10px;
+  width: 95%;
+}
+.register__select {
+  border-radius: 13pt;
+  border: solid 0.8pt #707070;
+  padding: 7px 0 7px 10px;
+  font-size: 11px;
+}
+.register__send-btn {
+  border-radius: 5pt;
+  border: none;
+  background-color: #ED6A4C;
+  font-size: 14px;
+  padding: 8px 41px 7px 43px;
+  color: #FFF;
+}
+.register__birthday {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+.register__btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20pt 50pt 0;
+}
+
+/*# sourceMappingURL=register.css.map */

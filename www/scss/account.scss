@@ -1,0 +1,85 @@
+.account {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  background-color: #626262;
+  background-image: url(../images/機能紹介_サインイン_サインアップ_背景.png);
+  background-size: cover;
+  
+  &__title {
+    color: #ED6A4C;
+    font-size: 25pt;
+  }
+
+  &__form {
+    background-color: rgba(162, 162, 162, 0.27);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 32pt 0;
+  }
+
+  &__go-btn {
+    align-self: flex-end;
+    margin-right: 48pt;
+  }
+
+  // .twitter_login {
+  //   background-color: #4190C6;
+  //   border-radius: 5pt;
+  //   border: none;
+  //   color: #FFF;
+  //   width: 230pt;
+  //   padding: 6pt 30pt;
+  //   font-size: 10pt;
+  //   margin-top: 20pt;
+  // }
+  // .google_login {
+  //   background-color: #FFF;
+  //   border-radius: 5pt;
+  //   border: solid 0.5pt #707070;
+  //   padding: 6pt 30pt;
+  //   font-size: 10pt;
+  //   margin-top: 15pt;
+  // }
+
+  &__input {
+    width: 80%;
+    height: 43px;
+    border-radius: 30px;
+    border: solid 1px #707070;
+    text-indent: 25px;
+    margin-bottom: 18px;
+  }
+
+  &__forgot-pass {
+    text-decoration: underline;
+    font-size: 12pt;
+    color: #ED6A4C;
+    margin-top: 14pt;
+  }
+  
+  // #login_account {
+  //   width: 72.98pt;
+  //   height: 44.9pt;
+  //   background-color: #E8610C;
+  //   color: #FFFFFF;
+  //   font-size: 26.27pt;
+  //   display: block;
+  //   margin: 50.74pt auto 99.71pt;
+  // }
+  
+  // #new_account {
+  //   width: 117.18pt;
+  //   height: 33.89pt;
+  //   background-color: #A6A7A7;
+  //   color: #FFFFFF;
+  //   border-radius: 6.47pt;
+  //   font-size: 18.43pt;
+  // }
+}

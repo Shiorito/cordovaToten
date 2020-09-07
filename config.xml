@@ -61,8 +61,14 @@
         <splash width="2208" height="1242" src="res/screen/ios/ios_splash_2208_1242.png" />
         <splash width="2436" height="1125" src="res/screen/ios/ios_splash_2436_1125.png" />
         
-        <config-file parent="GADApplicationIdentifier" target="*-Info.plist">
+        <!-- <config-file parent="GADApplicationIdentifier" target="*-Info.plist">
             <string>ca-app-pub-8657757436017103~8650036392</string>
+        </config-file> -->
+        <config-file target="*-Info.plist" parent="GADApplicationIdentifier">
+            <string>ca-app-pub-8657757436017103~8650036392</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="GADIsAdManagerApp">
+            <true/>
         </config-file>
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="1" />
