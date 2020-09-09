@@ -32,9 +32,15 @@
   <!-- Vue.js-->
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="js/app.js"></script>
+
+  <!-- slick -->
+  <link href="js/slick-theme.css" rel="stylesheet" type="text/css">
+  <link href="js/slick.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="js/slick.min.js"></script>
 </head>
 <body>
-  <ons-navigator swapable id="myNavigator" page="index.html"></ons-navigator>
+  <ons-navigator swapable id="myNavigator" page="category.html"></ons-navigator>
 </body>
 </html>
 
@@ -219,6 +225,26 @@
           }
         });
       }
+    </script>
+  </ons-page>
+</template>
+
+<template id="category.html">
+  <ons-page id="category">
+    <div class="category">
+      <h1>分析カテゴリを選ぶテン！</h1>
+      <ul class="slider">
+        <li>取り組みたいこと</li>
+        <li>趣味</li>
+        <li>タスク</li>
+        <li>過去</li>
+      </ul>
+    </div>
+    <script>
+      $(".slider").slick({
+        centerMode: true,
+        
+      });
     </script>
   </ons-page>
 </template>
