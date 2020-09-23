@@ -7,6 +7,9 @@ button {
 button:focus {
   outline: 0;
 }
+a:focus {
+  outline: 0;
+}
 button:active {
   box-shadow: none;
 }

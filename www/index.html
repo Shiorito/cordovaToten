@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="css/register.css">
   <link rel="stylesheet" href="css/account.css">
   <link rel="stylesheet" href="css/password-reset.css">
+  <link rel="stylesheet" href="css/category.css">
+  <link rel="stylesheet" href="css/cat-detail.css">
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
 
@@ -231,20 +233,246 @@
 
 <template id="category.html">
   <ons-page id="category">
-    <div class="category">
-      <h1>分析カテゴリを選ぶテン！</h1>
-      <ul class="slider">
-        <li>取り組みたいこと</li>
-        <li>趣味</li>
-        <li>タスク</li>
-        <li>過去</li>
+    <div class="background" style="background-color: #E8F6FD"></div>
+    <div class="category" id="categoryVue">
+      <img class="tenchan__lefttop" src="./images/分析中_キャラ.png">
+      <div class="category__title">▶︎<u>分析カテゴリ</u><span>を選ぶテン！</span></div>
+      <ul class="category__slider">
+        <li class="category__item">
+          <div class="category__header--yellow">
+            <span class="category__header-title">取り組みたいこと<br>叶えたいこと</span>
+          </div>
+          <ul class="category__li">
+            <li>留学したい</li>
+            <li>インターンに行きたい<div class="category__nado">など</div></li>
+          </ul>
+          <a class="category__link" @click="goDetail('category_future.html')">詳しい説明</a>
+        </li>
+        <li class="category__item category__non-active">
+          <div class="category__header--pink">
+            <span class="category__header-title">趣味・好きなこと</span>
+          </div>
+          <ul class="category__li">
+            <li>読書が好き</li>
+            <li>テニスが好き<div class="category__nado">など</div></li>
+          </ul>
+          <a class="category__link" @click="goDetail('category_hobby.html')">詳しい説明</a>
+        </li>
+        <li class="category__item category__non-active">
+          <div class="category__header--blue">
+            <span class="category__header-title">タスク</span>
+          </div>
+          <ul class="category__li">
+            <li>マニュアルを作成する</li>
+            <li>レポートを作成する<div class="category__nado">など</div></li>
+          </ul>
+          <a class="category__link" @click="goDetail('category_task.html')">詳しい説明</a>
+        </li>
+        <li class="category__item category__non-active">
+          <div class="category__header--green">
+            <span class="category__header-title">過去の体験・経験</span>
+          </div>
+          <ul class="category__li">
+            <li>アルバイトで接客に力を入れた</li>
+            <li>イメチェンした<div class="category__nado">など</div></li>
+          </ul>
+          <a class="category__link" @click="goDetail('category_experience.html')">詳しい説明</a>
+        </li>
       </ul>
+      <button class="category__go" @click="goAnalyze">決 定</button>
+      <my-toolbar></my-toolbar>
     </div>
     <script>
-      $(".slider").slick({
-        centerMode: true,
-        
-      });
+      ons.getScriptPage().onInit = function () {
+        toolbar_active = 0;
+        $(".category__slider").on('init', function(){
+          $('.slick-current').addClass('category__active');
+        });
+        $(".category__slider").slick({
+          centerMode: true,
+          centerPadding: "70px",
+          arrows: false,
+          focusOnSelect: true,
+        });
+        $(".category__slider").on('beforeChange', function(){
+          $('.slick-current').removeClass('category__active');
+        });
+        $('.category__slider').on('afterChange', function(){
+          $('.slick-current').addClass('category__active');
+        });
+
+        new Vue({
+          el: '#categoryVue',
+          methods: {
+            goAnalyze: function() {
+              document.querySelector('#myNavigator').pushPage("analyze.html");
+            },
+            goDetail: function(kind) {
+              document.querySelector('#myNavigator').pushPage(kind);
+            }
+          }
+        })
+      }
+    </script>
+  </ons-page>
+</template>
+
+<template id="category_future.html">
+  <ons-page>
+    <div class="background" style="background-color: #FFF"></div>
+    <div id="category_future">
+      <div class="cat-detail__header--yellow">
+        <a @click="document.getElementById('myNavigator').popPage()"><img src="images/各種ボタン/help-back_ボタン.png"></a>
+      </div>
+      <div class="cat-detail__title">
+        取り組みたいこと<br>叶えたいこと
+      </div>
+      <div class="cat-detail__exp">今後取り組みたいこと、叶えたいこと、やってみたいことなどについて分析するカテゴリです。</div>
+      <hr class="cat-detail__hr--yellow">
+      <div class="cat-detail__midashi">●このカテゴリで分析すると…</div>
+      <div class="cat-detail__frame">
+        「<span class="cat-detail__emphasis">やりたいと思っているけれど、やれていない</span>」ということに対して、適切な1歩目を踏み出せるようになる!
+      </div>
+      <div class="cat-detail__frame">
+        <span class="cat-detail__emphasis">やりたいと思った原点</span>を発見/再確認できる!
+      </div>
+      <div class="cat-detail__midashi">●テーマ例</div>
+      <div class="cat-detail__frame">
+        ・留学したい<br><br>
+        ・インターンに行きたい<br><br>
+        ・国家公務員になりたい<br><br>
+        ・家族を笑顔にしたい<br><br>
+        ・楽器を練習したい<br><br>
+        ・フランス語をもっと勉強したい<span class="cat-detail__nado">など</span>
+      </div>
+      <button class="cat-detail__more">もっと見る</button>
+    </div>
+    <script>
+      ons.getScriptPage().onInit = function() {
+        new Vue({
+          el: "#category_future",
+        });
+      }
+    </script>
+  </ons-page>
+</template>
+
+<template id="category_hobby.html">
+  <ons-page>
+    <div class="background" style="background-color: #FFF"></div>
+    <div id="category_hobby">
+      <div class="cat-detail__header--pink">
+        <a @click="document.getElementById('myNavigator').popPage()"><img src="images/各種ボタン/help-back_ボタン.png"></a>
+      </div>
+      <div class="cat-detail__title">
+        趣味・好きなこと
+      </div>
+      <div class="cat-detail__exp">自分の趣味や好きな物事、趣向などについて分析するカテゴリです。</div>
+      <hr class="cat-detail__hr--pink">
+      <div class="cat-detail__midashi">●このカテゴリで分析すると…</div>
+      <div class="cat-detail__frame">改めて、<span class="cat-detail__emphasis">自分の「好き」を言語化</span>できる!</div>
+      <div class="cat-detail__frame">他人になかなか理解してもらえないことに対する<span class="cat-detail__emphasis">自分の想いを共有できる!</span></div>
+      <div class="cat-detail__midashi">●テーマ例</div>
+      <div class="cat-detail__frame">
+        ・読書が好き<br><br>
+        ・テニスが好き<br><br>
+        ・音楽を聴くのが好き<br><br>
+        ・ファッションが好き<br><br>
+        ・ものづくりが好き<br><br>
+        ・アニメの〇〇〇が好き<span class="cat-detail__nado">など</span>
+      </div>
+      <button class="cat-detail__more">もっと見る</button>
+    </div>
+    <script>
+      ons.getScriptPage().onInit = function() {
+        new Vue({
+          el: "#category_hobby",
+        });
+      }
+    </script>
+  </ons-page>
+</template>
+
+<template id="category_experience.html">
+  <ons-page>
+    <div class="background" style="background-color: #FFF"></div>
+    <div id="category_experience">
+      <div class="cat-detail__header--green">
+        <a @click="document.getElementById('myNavigator').popPage()"><img src="images/各種ボタン/help-back_ボタン.png"></a>
+      </div>
+      <div class="cat-detail__title">
+        過去の体験・経験
+      </div>
+      <div class="cat-detail__exp">
+        これまでの経験や体験、記憶に残っていることなどについて分析するカテゴリです。
+      </div>
+      <hr class="cat-detail__hr--green">
+      <div class="cat-detail__midashi">●このカテゴリで分析すると…</div>
+      <div class="cat-detail__frame">
+        自分が<span class="cat-detail__emphasis">当時何を考えていたのか</span>を思い出せる!
+      </div>
+      <div class="cat-detail__frame">
+        その出来事で、<span class="cat-detail__emphasis">自分が何をどう感じたのか</span>の整理ができる!
+      </div>
+      <div class="cat-detail__midashi">●テーマ例</div>
+      <div class="cat-detail__frame">
+        ・大学の学園祭で代表を務めた<br><br>
+        ・居酒屋アルバイトで接客に力を入れた<br><br>
+        ・TOEICで900点を目標に頑張った<br><br>
+        ・〇〇を受験した<br><br>
+        ・高校を中退した<br><br>
+        ・イメチェンした<span class="cat-detail__nado">など</span>
+      </div>
+      <button class="cat-detail__more">もっと見る</button>
+    </div>
+    <script>
+      ons.getScriptPage().onInit = function() {
+        new Vue({
+          el: "#category_experience",
+        });
+      }
+    </script>
+  </ons-page>
+</template>
+
+<template id="category_task.html">
+  <ons-page>
+    <div class="background" style="background-color: #FFF"></div>
+    <div id="category_task">
+      <div class="cat-detail__header--blue">
+        <a @click="document.getElementById('myNavigator').popPage()"><img src="images/各種ボタン/help-back_ボタン.png"></a>
+      </div>
+      <div class="cat-detail__title">
+        タスク
+      </div>
+      <div class="cat-detail__exp">
+        やらなければならないこと、タスクなどについて分析するカテゴリです。
+      </div>
+      <hr class="cat-detail__hr--blue">
+      <div class="cat-detail__midashi">●このカテゴリで分析すると…</div>
+      <div class="cat-detail__frame">
+        他人から<span class="cat-detail__emphasis">与えられたタスクを自分事に</span>落とし込める!
+      </div>
+      <div class="cat-detail__frame">
+        「やらなければならないけどやりたくない」タスクへの<span class="cat-detail__emphasis">やる気が出る</span>
+      </div>
+      <div class="cat-detail__midashi">●テーマ例</div>
+      <div class="cat-detail__frame">
+        ・営業をする<br><br>
+        ・マニュアルを作成する<br><br>
+        ・期末レポートを書く<br><br>
+        ・アルバイトに行く<br><br>
+        ・就活をする<br><br>
+        ・節約する<span class="cat-detail__nado">など</span>
+      </div>
+      <button class="cat-detail__more">もっと見る</button>
+    </div>
+    <script>
+      ons.getScriptPage().onInit = function() {
+        new Vue({
+          el: "#category_task",
+        });
+      }
     </script>
   </ons-page>
 </template>

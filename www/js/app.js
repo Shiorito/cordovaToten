@@ -271,7 +271,7 @@ Vue.component("my-toolbar", {
   methods: {
     goAnalyze: function() {
       toolbar_active = 0;
-      document.getElementById("myNavigator").resetToPage("analyze.html");
+      document.getElementById("myNavigator").resetToPage("category.html");
     },
     goHome: function() {
       toolbar_active = 1;
